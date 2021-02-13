@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
+		<link rel="stylesheet" href="plt.css">
+		<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+		</script>
+		<script>
+			window.PlotlyConfig = {MathJaxConfig: 'local'}
+		 </script>
+		<script src="plugin/plotly/plotly.min.js"></script>
+		<script type="text/javascript" src="plots/overlaid-histogram-layout.js"></script>
+		<script type="text/javascript" src="streamline.js"></script>
+		<script type="text/javascript" src="plots/test.js"></script>
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/dracula.css" id="highlight-theme">
+
+		<style>
+		.container{
+			display: flex;
+		}
+		.col{
+			flex: 1;
+		}
+		.footer {
+		position: absolute; 
+		left: 35%;
+		top: 1em;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-auto-animate>
+					<h2>
+					<ul>
+						<li>Section 1</li>
+						<li>Section 2</li>
+						<li>Section 3</li>
+					</ul>
+					</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Section 1</li>
+						<li>Section 2</li>
+						<li>Section 3</li>
+					</ul>
+					</h2>
+				</section>
+				<section>
+					<h2>Microscopic Model</h2>
+					$$
+					dX_n = \sum_{m=1}^N f(X_m-X_n) dt + \sum_{m=1}^N g(X_m-X_n)dW_n
+					$$
+					$$
+					\rho_t + \left(\rho(f\ast\rho)\right)_x + \left(\rho\left(g\ast\rho\right)^2\right)_{xx} = 0
+					$$
+				</section>
+				<section>
+					<h2>Density dependent diffusion</h2>
+					<br /> 
+					<div class="container">
+						<div class="col">
+							If we have $g(x)=\delta(x)$ then we have
+							$$
+							\rho_t = D\left(\rho^3\right)_{xx}.
+							$$
+							The solution to this is a semi-ellipse which grows horizontally over time.
+							$$
+							\rho(x,t) = \frac{2}{\pi r(t)}\sqrt{1-\left(\frac{x}{r(t)}\right)^2}
+							$$
+							with $r(t) = 2\left(3Dt/\pi^2\right)^{1/4}$.
+						</div>
+						<div class="col">
+
+							<div class="stretch">
+								<video data-autoplay src="media/semi-ellipse-diffusion.mp4" height="100%" /></video>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="footer">
+						<p>Other title</p>
+					  </div>
+					<h2>Title</h2>
+					<div class="container">
+					<div class="col">
+					Description of something about this plot. 
+					$$ x_{trace} \sim N(0,\mu)$$
+					And then mention something else.
+					$$ x_{theory} \sim N(0.2,\mu_2)$$
+					Which doesn't quite agree with what we have above.
+					</div>
+					
+					<div class="col">
+						<div id="smaller-plot" style="padding-left:15%;"></div>
+						<script>
+							Plotly.newPlot('smaller-plot', {
+							data: data,
+							layout: layout
+							});
+						</script>
+						<b>Figure 1:</b> This is a caption
+					</div>
+					
+					</div>
+					<aside class="notes">
+						Shhh, these are your private notes 📝
+					  </aside>
+				</section>
+				<section data-auto-animate>
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Section 1</li>
+						<li>Section 2</li>
+						<li>Section 3</li>
+					</ul>
+					</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>
+					<ul>
+						<li>Section 1</li>
+						<li style="color: #1F77B4;">Section 2</li>
+						<li>Section 3</li>
+					</ul>
+					</h2>
+				</section>
+				<section>
+					<div id="streamline" class="r-stretch" style="padding-left:35%;"></div>
+					<script>
+					    Plotly.newPlot('streamline', {
+							data: data_short, 
+							layout: layout_short
+						});
+					</script>
+				</section>
+				<section>
+					<div id="short-plot" class="r-stretch"></div>
+					<script>
+					    Plotly.newPlot('short-plot', {
+							data: stre.data,
+							layout: stre.layout
+						});
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1800,
+				height: 920,
+
+				margin: 0.04,
+
+				menu: {
+					themes: true,
+					hideMissingTitles: false,
+				},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart, 
+							RevealMenu, RevealChalkboard, RevealMath, RevealZoom ]
+			});
+		</script>
+	</body>
+</html>
