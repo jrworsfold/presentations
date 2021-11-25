@@ -1,0 +1,664 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/personal.css" id="theme">
+		<link rel="stylesheet" href="plt.css">
+		<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+		</script>
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/dracula.css" id="highlight-theme">
+
+		<style>
+		.container{
+			display: flex;
+		}
+		.col{
+			flex: 1;
+		}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			
+			<div class="slides">
+				<section data-state="head" data-menu-title="Things we want to Model">
+					<h2>Stochastic Kinematic flows arising from interacting particle systems</h2>
+					<h4>Why do Fish Swarm and Traffic Jams form?</h4>
+					<h3 style="color:#1F77B4">Jeremy Worsfold</h3>
+					<h4 style="color:#FF8616">Supervised by Tim Rogers and Paul Milewski</h4>
+				</section>
+				<section data-auto-animate data-menu-title="Intro">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Modelling Paradigm">
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section data-state="head" data-menu-title="Swarming Example">
+					<h2>
+						Formation of Traffic Jams
+					</h2>
+					<div class="container">
+						<div class="col">
+							<br/>
+							<ul>
+								<li>We have a finite number of cars</li>
+								<li>Clearly they do not make perfect decisions otherwise we wouldn't see a jam</li>
+								<li>Can we come up with simple rules to explain the jams forming and general behaviour</li>
+							</ul>
+						</div>
+						<div class="col">
+							<div class="stretch">
+								<iframe width="700" height="400" data-src="https://www.youtube.com/embed/ZNLIoolCeKI"></iframe>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-state="head" data-menu-title="Swarming Example">
+					<h2>
+						Synchronisation of Fireflies
+					</h2>
+					<div class="container">
+						<div class="col">
+							<br/>
+							<br/>
+							<br/>
+							<ul>
+								<li>Not only are we interested in vehicle traffic jams, we are interested in <b style="color: #1F77B4;">agents</b></li>
+								<li>These can be drivers of cars or organisms like fish or in the case below, insects</li>
+								<li>These are fireflies, they start of flashing at random times</li>
+								<li>Slowly they "nudge" each other to synchronise up their flashes</li>
+							</ul>
+						</div>
+						<div class="col">
+							<div class="stretch">
+								<video data-autoplay loop="true" src="conference/fireflies.mp4" width="100%"></video>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-state="head" data-menu-title="Swarming Example">
+					<h2>Kuramoto Model</h2>
+					<div class="container">
+						<div class="col">
+							<div class="fragment">
+							<div class="stretch">
+								<video data-autoplay loop="true" src="conference/kuramoto.mp4" width="70%"></video>
+							</div>
+							<p style="font-size: 80%;">synchronisation over time of oscillators in the Kuramoto model (colour refers to intrinsic frequency, $\omega_n$)</p>
+							</div>
+						</div>
+						<div class="col">
+							<br/>
+							<p style="font-size: 80%;">
+							One way we can study the synchronisation of fireflies is with the Kuramoto model. We have $N$ oscillators each with a phase $X_n\in[0,2\pi]$ for $n=1,\dots,N$. Given a coupling strength $K$ and diffusion parameter $D$, these oscillators obey:
+							$$
+							\mathrm{d}X_n = \left[{\color{cyan}{\omega_n}}+ \frac{K}{N}\sum_{m=1}^N \sin(X_m-X_n)\right] \mathrm{d}t + \sqrt{2D}\mathrm{d}W_n
+							$$
+							</p>
+							<h4 class="fragment" style="color: #FF8616;">Can we generalise this to capture other types of coupling between agents?</h4>
+						</div>
+					</div>
+				</section>
+
+
+				<section data-auto-animate data-state="head" data-menu-title="How we model">
+					<h2>Generalised model of interacting agents</h2>
+					<p>Cars/Fish/Whatever are $N$ agents with positions $X_n\in[0,2\pi]$ for $n=1,\dots,N$</p>
+					<div data-id="sde">
+						$$
+						\mathrm{d}X_n = \frac{1}{N}\left[\sum_{m=1}^N f(X_m-X_n)\right] \mathrm{d}t + \frac{\sqrt{2D}}{N}\left[\sum_{m=1}^N g(X_m-X_n)\right]\mathrm{d}W_n
+						$$
+					</div>
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Macroscopic to Mesoscopic">
+					<h2>From small scale to large scale</h2>
+					<div data-id="sde">
+						$$
+						\mathrm{d}X_n = \frac{1}{N}\left[\sum_{m=1}^N f(X_m-X_n)\right] \mathrm{d}t + \frac{\sqrt{2D}}{N}\left[\sum_{m=1}^N g(X_m-X_n)\right]\mathrm{d}W_n
+						$$
+					</div>
+					<p>
+					Introduce a concept of density of agents:
+					$$
+					\varrho(x,t) = \frac{1}{N}\sum_{n=1}^N \delta_{X_n(t)}(x)
+					$$
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Swarming Example">
+					<h2>Agent Density</h2>
+					<p>We want a nicer (smoother) way of representing the density</p>
+					<div class="container">
+						<div class="col">
+							<p style="color: #FF8616;">
+								$$
+								\int_0^{2\pi} F(x) \varrho(x,t) \mathrm{d}{x}
+								$$
+							</p>
+							<div class="stretch">
+								<img data-src="aims/media/micro.png" style="width:360px;"/>
+							</div>
+							
+						</div>
+						<div class="col">
+							<div class="fragment">
+							<p style="color: #1F77B4;">
+								$$
+								\int_0^{2\pi} F(x) \rho(x,t) \mathrm{d}{x}
+								$$
+							</p>
+
+							<div class="stretch">
+								<img data-src="aims/media/macro.png" style="width:360px;"/>
+							</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Swarming Example">
+					<h2>Agent Density</h2>
+					<p>We want a nicer (smoother) way of representing the density</p>
+					<div class="container">
+						<div class="col">
+							<p style="color: #FF8616;">
+								$$
+								\int_0^{2\pi} F(x) \varrho(x,t) \mathrm{d}{x}
+								$$
+							</p>
+							<div class="stretch">
+								<img data-src="aims/media/meso.png" style="width:360px;"/>
+							</div>
+							
+						</div>
+						<div class="col">
+							<div>
+							<p style="color: #1F77B4;">
+								$$
+								\int_0^{2\pi} F(x) \rho(x,t) \mathrm{d}{x}
+								$$
+							</p>
+
+							<div class="stretch">
+								<img data-src="aims/media/macro.png" style="width:360px;"/>
+							</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-state="head" data-menu-title="Macroscopic to Mesoscopic">
+					<style>.head header:after { content: "Modelling Paradigm"; }</style>
+					<h2>Agent Density</h2>
+					<div data-id="spde", style="color: #FF8616;">
+					$$
+					\rho_t + \underbrace{\left(\rho(f\ast\rho)\right)_x}_{\text{advection}} - \underbrace{D\left(\rho\left(g\ast\rho\right)^2\right)_{xx}}_{\text{diffusion}} + \underbrace{\sqrt{\frac{2D}{N}}\left((g\ast\rho)\rho^{\frac{1}{2}}\eta\right)_x}_{\text{noise}} = 0
+					$$
+					</div>
+
+					<p>
+						$$
+						(f\ast\rho)(x,t) = \int_0^{2\pi} f(x-y)\rho(y,t) \mathrm{d}y, \quad \langle \eta(x,t)\eta(y,s) \rangle = \delta(x-y)\delta(t-s)
+						$$
+					</p>
+					<p>
+						The case where $g(x)=1$, has been studied before (Dean 1996). 
+					</p>
+					<p>
+						$$
+						\mathrm{d}X_n = \frac{1}{N}\sum_{m=1}^N f(X_m-X_n) \mathrm{d}t + \frac{\sqrt{2D}}{N}\sum_{m=1}^N g(X_m-X_n)\mathrm{d}W_n
+						$$
+					</p>
+				</section>
+				<section data-auto-animate data-menu-title="Recap">
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Macroscopic Examples">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li style="color: #1F77B4;">Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section data-state="head" data-menu-title="Swarming Example">
+					<style>.head header:after { content: "Macroscopic Examples"; }</style>
+					<h2>Swarming Model (Milewski 2008)</h2>
+					<p>Let's say we have some organisms, like fish, which move towards fish in front of them but spread out if there are too many fish close to them.</p>
+					<div class="container">
+						<div class="col">
+							<div class="fragment">
+							<p style="color: #FF8616;">
+								$$
+								\rho_{t}+\left(\rho(K\ast\rho)\right)_x - D(\rho^3)_{xx}=0
+								$$
+							</p>
+							<p style="color: #FF8616;">
+								$$
+								K(x) = \begin{cases}
+								e^{-x}, & x\geq 0\\
+								0, & x \le 0
+								\end{cases}
+								$$
+							</p>
+						</div>
+							
+						</div>
+						<div class="col">
+							<div class="fragment">
+							<p style="color: #1F77B4;">
+								$$
+								\rho_t + \left(\rho(f\ast\rho)\right)_x - D\left(\rho\left(g\ast\rho\right)^2\right)_{xx} = 0
+								$$
+							</p>
+
+							<p class="fragment" style="color: #1F77B4;">
+								$$
+								\begin{aligned}
+								\Rightarrow f(x) & = K(x) \\
+								g(x) & = \delta(x)
+								\end{aligned}
+								$$
+							</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-state="head" data-menu-title="Swarming Example">
+					<h2>
+						Meet Harold!
+					</h2>
+					<div class="stretch">
+						<img data-src="conference/harold.jpeg"/>
+					</div>
+				</section>
+				<section data-state="head" data-menu-title="Swarming Example">
+					<style>.head header:after { content: "Macroscopic Examples"; }</style>
+					<h2>Swarming Model (Milewski 2008)</h2>
+					<div class="container">
+						<div class="col">
+							<h3 style="color: #FF8616;">PDE</h3>
+							<div class="stretch">
+								<img data-src="aims/media/swarm-comp.png" style="width:360px;"/>
+							</div>
+							<div class="stretch">
+								<img data-src="aims/media/swarm-cont.png" style="width:360px;"/>
+							</div>
+							
+						</div>
+						<div class="col">
+							<div class="fragment">
+							<h3 style="color: #1F77B4;">Our Model</h3>
+							<div class="stretch">
+								<img data-src="aims/media/swarm-compact.png" style="width:420px;"/>
+							</div>
+							<div class="stretch">
+								<img data-src="aims/media/swarm-continuous.png" style="width:420px;"/>
+							</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-state="head" data-menu-title="Swarming Example">
+					<h2>PDE vs SPDE</h2>
+					<div>
+						<p>
+							We don't have an infinite number of agents though. How can we quantify the fluctuation in shape of Harold compared to the PDE solution?
+						</p>
+						<p>
+							Harold does not have an analytic shape sadly so let's look at a simpler system.
+						</p>
+
+					</div>
+					<div class="stretch">
+						<video data-autoplay loop="true" src="conference/harold2.mp4" height="100%"></video>
+					</div>
+				</section>
+				<section data-state="head" data-menu-title="Density Dependent Diffusion">
+					<h2>Density dependent diffusion</h2>
+					<br /> 
+					<div class="container">
+						<div class="col">
+							If we have $g(x)=\delta(x)$ then we have
+							$$
+							\rho_t = D\left(\rho^3\right)_{xx}.
+							$$
+							The solution to this is a semi-ellipse which grows horizontally over time.
+							$$
+							\rho(x,t) = \frac{2}{\pi r(t)}\sqrt{1-\left(\frac{x}{r(t)}\right)^2}
+							$$
+							with $r(t) = 2\left(3Dt/\pi^2\right)^{1/4}$.
+						</div>
+						<div class="col">
+							<div class="fragment">
+							<div class="stretch">
+								<video data-autoplay src="aims/media/semi-ellipse-diffusion.mp4" height="100%"></video>
+							</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate data-state="head" data-menu-title="Ellipse Fluctuations">
+					<h2>Ellipse Fluctuations</h2>
+					<br /> 
+					<div class="container">
+						<div class="col">
+							$$
+							\rho_{t} - D(\rho^3)_{xx} + \sqrt{\frac{2D}{N}}\left(\rho^{\frac{3}{2}}\eta\right)_x = 0
+							$$
+							Assume that the fluctuations take the following form:
+							$$
+							\rho(x,t) = \rho^*(x,t) + \frac{1}{\sqrt{N}}\xi(x,t)
+							$$
+						</div>
+						<div class="col">
+
+							<div class="stretch">
+								<video data-autoplay src="aims/media/semi-ellipse-diffusion.mp4" height="100%"></video>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Ellipse Fluctuations">
+					<h2>Ellipse Fluctuations</h2>
+					<br /> 
+                    <p>
+					$$
+                    \xi_t = \frac{1}{4t}\left[(r^2(t)-x^2)\xi_{xx} - 4x\xi_x - 2\xi\right] + \left((\rho^*)^{3/2}\eta\right)_x
+                    $$
+                    This is hard to work with so we look at the cumulative moments instead:
+                    $$
+                    M_n(t) := \int_{0}^{2\pi} x^n \rho(x,t) \mathrm{d}x
+                    $$
+                    </p>
+                    <p data-id="flucs">
+                    Fluctuations in the cumulative moments:
+                    $$
+                    Z_n(t) := \sqrt{N}\left(M_n(t) - M_n^*(t)\right)
+                    $$
+                    </p>
+				</section>
+
+				<section data-state="head" data-menu-title="Ellipse Fluctuations">
+					<div class="container">
+						<div class="col">
+							<h2><br/>Fluctuations in the moments</h2>
+							<p>
+								$$
+								Z_n(t) := \sqrt{N}\left(M_n(t) - M_n^*(t)\right)
+								$$
+							</p>
+							We get a nice multivariate Ornstein–Uhlenbeck process which we can actually solve.
+							<p>
+								$$
+								Z_n'(t) = \frac{n(n-1)}{4t}\left[r^2 Z_{n-2} - Z_n\right] + \int_0^{2\pi} \zeta_n \mathrm{d}x
+								$$
+								</p>
+							<p>
+							$$
+							\begin{aligned}
+							\langle Z_1^2(t)\rangle = \frac{\sqrt{3Dt}}{\pi} , \quad \langle Z_2^2(t)\rangle = \frac{t}{4\pi^2}
+							\end{aligned}
+							$$
+							</p>
+						</div>
+						<div class="col">
+							<video data-autoplay loop="true" src="aims/media/semi-ellipse-and-moments.mp4" height="50%" ></video>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-menu-title="Recap">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li style="color: #1F77B4;">Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Finite-sized effects">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li style="color: #1F77B4;">Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Whitham Model">
+					<h2 data-id="title">LWR Model of Traffic (1955)</h2>
+					<p>Our agents describe the flow of cars along a single lane road</p>
+					<div class="container">
+						<div class="col">
+							<p data-id="equation" style="color: #FF8616;">
+								$$
+								\rho_{t}+ \left(\rho v(\rho)\right)_x - D\rho_{xx}=0
+								$$
+								with $v(\rho)=v_0\left(1-\frac{\rho}{\rho_{max}}\right)$
+							</p>
+							
+						</div>
+						<div class="col">
+							<p class="fragment" style="color: #1F77B4;">
+								$$
+								\rho_t + \left(\rho(f\ast\rho)\right)_x - D\left(\rho\left(g\ast\rho\right)^2\right)_{xx} = 0
+								$$
+							</p>
+
+							<p class="fragment" style="color: #1F77B4;">
+								$$
+								\begin{aligned}
+								f(x) & = v_0 - \frac{v_0}{\rho_{max}}\delta(x) \\
+								g(x) & = 1
+								\end{aligned}
+								$$
+							</p>
+							
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-state="head" data-menu-title="Fluctuations">
+					<h2>Quantifying the Fluctuations</h2>
+					<p>
+						The LWR model has a stable, uniform state, $\rho(x,t)=\rho_0$.
+						$$
+						\rho_{t}+ \left(\rho v(\rho)\right)_x - D\rho_{xx} + \sqrt{\frac{2D}{N}}\left(\rho^{\frac{1}{2}}\eta\right)_x = 0
+						$$
+					</p>
+					<div class="container">
+						<div class="col" style="text-align: left;">
+							<p class="fragment">
+								We can characterise the frequency, spacing and strength of these fluctuations.
+							</p>
+                            <div class="stretch">
+                                <img data-src="aims/media/whitham-trace2.png" />
+                            </div>
+						</div>
+						<div class="col">
+							<p class="fragment">
+								$$
+								\rho(x,t) = \frac{1}{2\pi} + \frac{1}{\sqrt{N}}\xi(x,t)
+								$$
+							</p>
+                            <p class="fragment">
+                                Look at the the fourier series in space and FT in time of the density
+							</p>
+							<p class="fragment" data-id="fourier-density">
+								$$
+								\hat{\rho}_k(\omega) = \frac{1}{2\pi}\delta_{k,0}\delta(\omega) + \frac{1}{\sqrt{N}}\hat{\xi}_k(\omega)
+								$$
+							</p>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate data-state="head">
+					<style>.head header:after { content: "Finite-sized effects"; }</style>
+					<h2>Quantifying the Fluctuations</h2>
+					<p data-id="fourier-density">
+						$$
+						\tilde{\rho}_k(\omega) = \frac{1}{2\pi}\delta_{k,0}\delta(\omega) + \frac{1}{\sqrt{N}}\hat{\xi}_k(\omega)
+						$$
+					</p>
+					<p class="fragment">
+						$$
+						\langle |\hat{\xi}_k(\omega)|^2 \rangle =\frac{k^2D}{2\left[(k-\pi\omega)^2+\pi^2k^4D^2\right]}
+						$$
+					</p>
+
+					<div class="stretch">
+						<img data-src="aims/media/whitham-trace2.png" />
+					</div>
+				</section>
+				<section data-auto-animate data-menu-title="Recap">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li style="color: #1F77B4;">Patterns about Uniform Distributions</li>
+						<li>Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Future Work">
+					<h2>
+					<ul>
+						<li>Interacting Particle Systems</li>
+						<li>Swarming and Diffusion</li>
+						<li>Patterns about Uniform Distributions</li>
+						<li style="color: #1F77B4;">Conclusions and Questions</li>
+					</ul>
+					</h2>
+				</section>
+				<section data-state="head" data-menu-title="Recap">
+					<style>.head header:after { content: "Future Work"; }</style>
+					<h2>Recap</h2>
+					<h3 style="color: #1F77B4; font-size: 120%; line-height: 1.5em;">
+					<ul>
+						<li class="fragment">Created a model for 1D interacting agents</li>
+						<li class="fragment">We've seen how this could be applied to a variety of areas (traffic and swarming etc)</li>
+						<li class="fragment">Shown how it connects to kinematic flows for large $N$</li>
+						<li class="fragment">Stochastic behaviour can lead to pattern formation and fluctuations on the system as a whole</li>
+					</ul>
+					</h3>
+				</section>
+
+				<section data-state="head" data-menu-title="Recap">
+					<style>.head header:after { content: "Future Work"; }</style>
+					<h2>So have we explained vehicle traffic jams?</h2>
+					<h2 class="fragment" style="color: #1F77B4;">
+						Not quite...
+					</h2>
+				</section>
+
+				<section data-state="head" data-menu-title="Velocity Models">
+					<style>.head header:after { content: "Future Work"; }</style>
+					<h2>Incorporating Velocity</h2>
+
+					<p>
+						If we want to truly model vehicle traffic we will need to incorporate velocity which might look something like this:
+						$$
+						\mathrm{d}X_n = U_n \mathrm{d}t
+						$$
+						$$
+						\mathrm{d}U_n = \frac{1}{N}\sum_{m=1}^N f(X_m-X_n) \mathrm{d}t + \frac{1}{N}\sum_{m=1}^N g(X_m-X_n)\mathrm{d}W_n
+						$$
+					</p>
+				</section>
+
+				<section>
+					<h2 style="color: #1F77B4;">
+						Thank you for listening!
+					</h2>
+					<h2 style="color: #FF8616;">
+						Does anyone have any questions?
+					</h2>
+				</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1800,
+				height: 920,
+				slideNumber: 'c/t',
+				loop: true,
+
+				margin: 0.04,
+
+				menu: {
+					themes: true,
+					hideMissingTitles: true,
+				},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart, 
+							RevealMenu, RevealChalkboard, RevealMath, RevealZoom ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- Source: modified from https://bl.ocks.org/mbostock/3231298 -->
+
+<!DOCTYPE html>
+<body>
+<script src="js/d3.v4.min.js"></script>
+<script src="//unpkg.com/d3-force-bounce@0.4/dist/d3-force-bounce.min.js"></script>
+<script src="//unpkg.com/d3-force-surface@0.4/dist/d3-force-surface.min.js"></script>
+<script>
+
+    const GAS_DENSITY = 0.00001, // particles per sq px
+                NUM_DIFFUSERS = 4,
+                DIFFUSER_RADIUS = 100;
+    let	TEMP = 10;
+
+    const color = d3.scaleOrdinal().range(d3.schemeCategory20)
+
+    const canvasWidth = window.innerWidth,
+        canvasHeight = window.innerHeight,
+        numGasParticles = Math.round(canvasWidth * canvasHeight * GAS_DENSITY);
+        //svgCanvas = d3.select('svg#canvas')
+        //    .attr('width', canvasWidth)
+        //    .attr('height', canvasHeight);
+        
+        const svgCanvas = d3.select("body").append("svg")
+            .attr('width', canvasWidth)
+            .attr('height', canvasHeight);
+
+    function randomVelocity(temp) {
+        // The Maxwell-Boltzman velocity distribution where temp is a renormalized temperature temp = kT/m
+        return d3.randomNormal(0, Math.sqrt(temp))();
+    }
+
+    function generateParticles(temp) {
+        const diffusers = d3.range(NUM_DIFFUSERS).map(() => {
+            return {
+                x: Math.random() * canvasWidth,
+                y: Math.random() * canvasHeight,
+                vx: 0,
+                vy: 0,
+                r: DIFFUSER_RADIUS
+            }
+        });
+
+        const gas = d3.range(numGasParticles).map(() => {
+            return {
+                x: Math.random() * canvasWidth,
+                y: Math.random() * canvasHeight,
+                vx: randomVelocity(temp),
+                vy: randomVelocity(temp),
+                r: 20
+            }
+        });
+
+        return diffusers.concat(gas);
+    }
+
+
+
+    const forceSim = d3.forceSimulation()
+        .alphaDecay(0)
+        .velocityDecay(0)
+        .on('tick', particleDigest)
+        .force('bounce', d3.forceBounce()
+            .radius(d => d.r)
+        )
+        .force('container', d3.forceSurface()
+            .surfaces([
+                {from: {x:0,y:0}, to: {x:0,y:canvasHeight}},
+                {from: {x:0,y:canvasHeight}, to: {x:canvasWidth,y:canvasHeight}},
+                {from: {x:canvasWidth,y:canvasHeight}, to: {x:canvasWidth,y:0}},
+                {from: {x:canvasWidth,y:0}, to: {x:0,y:0}}
+            ])
+            .oneWay(true)
+            .radius(d => d.r)
+        )
+        .nodes(generateParticles(TEMP));
+
+    //
+
+    function particleDigest() {
+        let particle = svgCanvas.selectAll('circle.particle').data(forceSim.nodes())
+        .style("fill", function(d, i) { return color(i % 3); });
+
+        particle.exit().remove();
+
+        particle.merge(
+            particle.enter().append('circle')
+                .classed('particle', true)
+                .attr('r', d=>d.r)
+                .attr('fill', 'yellow')
+        )
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y);
+    }
+</script>

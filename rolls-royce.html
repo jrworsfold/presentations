@@ -1,0 +1,643 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Rolls-Royce</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/personal.css" id="theme">
+		<link rel="stylesheet" href="plt.css">
+		<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+		</script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/dracula.css" id="highlight-theme">
+
+		<style>
+		.container{
+			display: flex;
+		}
+		.col{
+			flex: 1;
+		}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			
+			<div class="slides">
+
+				<section data-state="head" data-menu-title="Things we want to Model">
+					<style>.head header:after { content: "Modelling Paradigm"; }</style>
+					<h2>Rolls Royce: Quantifying Risk of ash accumulation on aircraft engines</h2>
+					<h3 style="color:#1F77B4">Jeremy Worsfold</h3>
+                    <h4 style="color:#FF8616">In collaboration with Jordan Taylor</h4>
+					<h4 style="color:#FF8616">Supervised by Sergey Dolgov and Tristan Pryer</h4>
+					<div class="container">
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/rolls_royce_logo.png"  height="250"/>
+							</div>
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/SAMBa-White-Transparent (1).png"/>
+							</div>
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/met_office.jpg" height="250"/>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate data-menu-title="Intro">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Modelling Paradigm">
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section>
+					<h2>Why Rolls-Royce wants to avoid ash exposure</h2>
+
+					<div class="container">
+						<div class="col">
+							<h3 style="font-size: 120%;">
+							<ul>
+								<li>Dust and ash particles contaminents in the air</li>
+								<li>Ash builds up on the engines as the aircraft flies through</li>
+								<li>Repeated expoure can cause engines to fail</li>
+								<li style="color: #1F77B4;">Presents RISK and COST</li>
+							</ul>
+							</h3>
+						</div>
+						<div class="col">
+
+							<div class="stretch">
+								<img src="rolls-royce/volcanic_ash.png" height="300"/>
+							</div>
+						</div>
+					</div>
+                    
+                </section>
+
+				<section>
+					<h2>The task</h2>
+
+					<div class="container">
+						<div class="col">
+							<h3 style="font-size: 120%;">
+							<ul>
+								<li>Example: 2010 Icelandic volcano eruption</li>
+								<li>Grounded planes for weeks</li>
+								<li>Less extreme examples still cause major disruptions</li>
+								<li>How can we ensure the engines will be safe and continue to fly the planes?</li>
+							</ul>
+							</h3>
+						</div>
+						<div class="col">
+
+							<div class="stretch">
+								<iframe width="700" height="400" data-src="https://www.youtube.com/embed/57hUhLdyYyg"></iframe>
+							</div>
+						</div>
+					</div>
+                    
+                </section>
+
+				<section>
+					<h2>The task pt 2</h2>
+
+					<div class="container">
+						<div class="col">
+							<div class="stretch">
+								<img src="rolls-royce/rolls-royce-slide.png"/>
+							</div>
+						</div>
+						<div class="col">
+							We can use numerical weather predictions to model the spread of ash from an eruption.
+							Test different paths to see how much ash the aircraft encounters along a route.
+							What is the optimal route to minimise both fuel and accumulated "dosage" of Ash?
+							More specifically, what is the best route to take to minimise RISK of ash accumulation?
+						</div>
+					</div>
+                    
+                </section>
+
+				<section>
+					<h2>Previous Work</h2>
+
+					<div class="container">
+						<div class="col">
+							<p><br/>Rolls-Royce have already used simulated data for an eruption to estimate the dosage that would be accumulated for particular flight paths and altitudes. </p>
+							<p>This doesn't allow for changing the flight path due to the ash cloud and simplifies the outcome by choosing the maximum possible dosage as the actual dosage. This may restrict flight paths more than necessary.</p>
+						</div>
+						<div class="col">
+
+							<div class="stretch">
+								<img src="rolls-royce/flightlevel.png"/>
+							</div>
+						</div>
+					</div>
+                    
+                </section>
+				<section data-auto-animate data-menu-title="Intro">
+					<h2>
+					<ul>
+						<li style="color: #1F77B4;">Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Modelling Paradigm">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li style="color: #1F77B4;">Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section>
+					<h2>Creating a Statistical Model for Ash Cloud</h2>
+					<ul>
+						<li>To train our reinforcement learning agent we need a lot of data.</li>
+						<li>We want to be able to pick independent random samples of the distribution</li>
+						<li>We have some simulations of an imaginary volcanic eruption</li>
+					</ul>
+					<div class="stretch">
+						<img src="rolls-royce/slice.png"/>
+					</div>
+				</section>
+
+				<section>
+					<h2>Truncated Gaussian</h2>
+					<p>
+						First way was to use a Gaussian Distribution (ensuring positivity):
+						$$
+						\begin{align}
+							\boldsymbol\rho \sim \max\left(0,\mathcal{N}\left(\boldsymbol\mu,\Sigma\right)\right)
+						\end{align}
+						$$
+						where we calculate the mean and covariance from our sampled simulations:
+
+						$$\begin{align}
+						R & =\left[R_{i j}\right]=\left[\rho\left(\mathbf{x}_{i}, \omega_{j}\right)\right], \quad i=1, \ldots, M, \quad j=1, \ldots, N \\
+						\boldsymbol\mu & =\mathbf{\overline R} = \frac{1}{N}\sum_{j=1}^{N} \mathbf{R}_j \\
+						\Sigma & = C = \frac{1}{N-1} \sum_{j=1}^{N} (\mathbf{R}_j -  \mathbf{\overline R}) (\mathbf{R}_j - \mathbf{\overline R})^\top \in \mathbb{R}^{M \times M},
+						\end{align}
+						$$
+					</p>
+				</section>
+
+				<section>
+					<h2>Truncated Gaussian</h2>
+					<div class="container">
+						<div class = "col">
+							<p><br/></p>
+							<ul>
+								<li>This works when the density distribution is not close to zero with a wide variance</li>
+								<li>Most of the points have small concentrations of ash</li>
+								<li style="color: #1F77B4;">Significant oversampling of zero</li>
+								<li style="color: #1F77B4;">Non guassian result was not really the intention</li>
+								<li>We investigated other distributions with support $[0,\infty)$ eg. Weibull</li>
+								<li>These become very difficult to sample from</li>
+							</ul>
+
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/rho-distr.png"/>
+							</div>							
+
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Direct sampling</h2>
+					<div class="container">
+						<div class = "col">
+							<p><br/></p>
+							<ul>
+								<li>Instead decided to go back to directly using simulated samples</li>
+								<li>Each run we would just sample a different realisation of the ash cloud</li>
+								<li>Right: An example of another simulated ash cloud, viewed from above</li>
+								<li>This will be the second dataset we train our agents on</li>
+							</ul>
+
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/birdseye.png"/>
+							</div>							
+
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-menu-title="Intro">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li style="color: #1F77B4;">Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="Modelling Paradigm">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li style="color: #1F77B4;">Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section>
+					<h2>Markov Decision Process (MDP)</h2>
+
+					<p>
+						We model travelling through an ash cloud as a MDP. This means:					
+					</p>
+					<ul>
+						<li>Have finite set of states $\mathcal{S}$</li>
+						<li>Have finite set of actions $\mathcal{A}$</li>
+						<li class="fragment strike">Have transition probability matrix given state action pair</li>
+						<li>Have a reward function $\mathcal{R}$ such that</li>
+					</ul>
+					<p>
+						$$
+						\mathcal{R}^a_s = \mathbb{E} [R_t+1 | S_t = s, A_t = a]
+						$$
+					</p>
+				</section>
+
+				<section>
+					<h2>Altitude Optimisation</h2>
+					<div class="stretch">
+						<img src="rolls-royce/slice.png"/>
+					</div>
+				</section>
+
+				<section data-auto-animate>
+					<h2>Ash Clouds as a MDP</h2>
+					<div class="container">
+						<div class="col">
+							<ul>
+								<li>Environment in state $S=(x,h)$</li> 
+								<li>Has reward function $R_t=-\rho([x,h],w)-\beta$, $\beta$ is fuel cost, $w$ is random sample number</li>
+								<li>The expected return (or value), $V_t$, is the expected total reward we'll get from this position</li>
+								<li class="fragment">It has three possible actions: going right, right and up or right and down</li> 
+							</ul>
+						</div>
+						<div class="col">
+							<div class="r-hstack justify-center">
+								<div data-id="box1" style="background: #1F77B4; width: 300px; height: 250px; margin: 10px; border-radius: 25px; vertical-align: middle;"><br/><p>$(x,h)$</p><p>$V_{t}$</p></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div class="r-hstack justify-center">
+						<div data-id="box1" style="background: #1F77B4; width: 300px; height: 250px; margin: 10px; border-radius: 25px; vertical-align: middle;"><br/><p>$(x,h)$</p><p>$V_{t}$</p></div>
+						<div class="v-stack">
+							<div data-id="box2" data-auto-animate-delay="0.1" style="background: #FF8616; width: 300px; height: 230px; margin: 10px;border-radius: 20px;"><br/><p>$(x+1,h+1)$</p><p>$V_{t+1}$</p></div>
+							<div data-id="box3" data-auto-animate-delay="0.2" style="background: #FF8616; width: 300px; height: 230px; margin: 10px; border-radius: 20px;"><br/><p>$(x+1,h)$</p><p>$V_{t+1}$</p></div>
+							<div data-id="box3" data-auto-animate-delay="0.2" style="background: #FF8616; width: 300px; height: 230px; margin: 10px; border-radius: 20px;"><br/><p>$(x+1,h-1)$</p><p>$V_{t+1}$</p></div>
+						</div>
+					</div>
+					<h2 style="margin-top: 20px;">Policies</h2>
+				</section>
+
+				<section>
+					<h2>Policies and Action Value Functions</h2>
+					<p>
+					</br>
+						Policy: $\pi(a|s) = \mathbb{P}[A_t=a|S_t=s]$
+						</br>
+						To evaluate our expected total reward from our current state (value), need to do this w.r.t. our policy
+					</p>
+					<p class="fragment"><b style="color: #FF8616;">Bellman Expectation Equations:
+						$$
+						\begin{align}
+						v_\pi(s) & = \mathbb{E}_\pi[R_{t+1} + \gamma v_\pi(S_{t+1})|S_t=s] \\
+						q_\pi(a,s) & = \mathbb{E}_\pi[R_{t+1} + \gamma q_\pi(S_{t+1},A_{t+1})|S_t=s,A_t=a]
+						\end{align}
+						$$
+					</b>
+					$q_\pi(a,s)$ is the action value function. $q$ and $v$ are essentially two sides of the same coin.
+					</p>
+					<p class="fragment" style="color: #1F77B4;">We want to find the optimal policy, $\pi^*$ which maximises $q$ (or $v$) in the equations above.</p>
+
+				</section>
+
+				<section>
+					<h2>Distributional Reinforcement learning</h2>
+					<ul>
+						<li>We want to understand the <b style="color: #1F77B4;">risk</b> of taking certain paths</li>
+						<li>Don't just want an expected value of a state, we want a distribution of possible values</li>
+						<li>This would allow us to avoid potentially disasterous outcomes even if they're unlikely</li>
+					</ul>
+					<p class="fragment">
+						Distributional Bellman equation:
+						$$
+						\begin{align}
+						q_\pi(a,s) & = \mathbb{E}_\pi[R(a,s) + \gamma q_\pi(A^{\prime},S^{\prime})] \\
+						Z_\pi(a,s) & \stackrel{D}{=} R(a,s)+\gamma Z_\pi\left(A^{\prime},S^{\prime}\right) 
+						\end{align}
+						$$
+						Define the operator:
+						$$
+						\mathcal{T}^{\pi} Z(a, s):=R(a, s)+\gamma P^{\pi} Z(a, s)
+						$$
+					</p>
+				</section>
+
+				<section data-auto-animate data-menu-title="Reinforcement Learning">
+					<h2>Distributional Reinforcement Learning</h2>
+					<div class="container">
+						<div class = "col">
+							<p>
+								<br/>
+								Matching general probability distributions is hard so we use canonical, discretised distributions. This is the C51 algorithm.<br/> Going from one state to the next now looks like matching one distribution to another.
+							</p>
+
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/z1.png"/>
+							</div>							
+
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-menu-title="Reinforcement Learning">
+					<h2>Distributional Reinforcement Learning</h2>
+					<div class="container">
+						<div class = "col">
+							<p>
+								<br/>
+								Matching general probability distributions is hard so we use canonical, discretised distributions. This is the C51 algorithm.<br/> Going from one state to the next now looks like matching one distribution to another.
+							</p>
+
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/z2.png"/>
+							</div>							
+
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate data-menu-title="Reinforcement Learning">
+					<h2>Distributional Reinforcement Learning</h2>
+					<div class="container">
+						<div class = "col">
+							<p>
+								<br/>
+								Matching general probability distributions is hard so we use canonical, discretised distributions. This is the C51 algorithm.<br/> Going from one state to the next now looks like matching one distribution to another.
+								<br/>
+								Our optimisation of the policy still tries to maximise the expected total reward.
+							</p>
+
+						</div>
+						<div class = "col">
+							<div class="stretch">
+								<img src="rolls-royce/z3.png"/>
+							</div>							
+
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Optimising the policy</h2>
+					<p>
+						<br/>
+						How do we actually maximise the reward?
+						<ul>
+							<li class="fragment">Impractical to keep track of distributions for all states and actions</li>
+							<li class="fragment">Use neural networks to represent the state-action space</li>
+							<li class="fragment">We pick actions using an $\varepsilon$-greedy approach (this is our policy)</li>
+							<li class="fragment">Given a sampled transition $\left(s, a, r, s^{\prime}\right)$</li>
+							<li class="fragment">NN predicts the current and next value distribution, $p_i(s,a)$ and $p_i(s^{\prime},a^\ast)$ corresponding to the values: $z_i,i=1,...,51$</li>
+							<li class="fragment">Compute the Bellman update: $\mathcal{T}^{\pi} z_i=r + \gamma z_i$</li>
+							<li class="fragment">Our training loss is the "distance" (KL divergence) between the current distribution and Bellman projected next distribution</li>
+						</ul> 
+					</p>
+				</section>
+
+
+				<section data-auto-animate data-menu-title="prelim res">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li style="color: #1F77B4;">Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="prelim res">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li style="color: #1F77B4;">Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section>
+					<h2>Optimal Policy</h2>
+
+					<div class="container">
+						<div class="col">
+							<p style="font-size: 120%; text-align: left; margin-top: 140px;">
+								<b>Top:</b> 
+								<br/>
+								Examples of sampled ash clouds from truncated gaussian.
+								<br/>
+								<b>Bottom:</b> 
+								<br/>
+								<span style="color: #1F77B4;">Blue - optimal policy to go up </span>
+								<br/>
+								<span style="color: #FF8616;">Orange - optimal policy to go down</span>
+								<br/>
+								Grey: optimal policy to go straight ahead (or approximately equal).
+							</p>
+						</div>
+						<div class="col">
+							<div class="stretch" style="margin-top:-400px;">
+								<video data-autoplay src="rolls-royce/anim.mp4" height="100%"  data-background-video-loop="loop"></video>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h2>Action-Value Distribution</h2>
+					<div class="container">
+					<div class = "col">
+						<div class="stretch">
+							<img src="rolls-royce/birdseye.png"/>
+						</div>
+					</div>
+					<div class = "col">
+						<div class="stretch">
+							<img src="rolls-royce/birdeye-policy.png"/>
+						</div>
+						<p style="margin-top: -50px;"><span style="color: yellow;">Yellow: $\rightarrow$    </span>     <span style="color: blue;">Blue: $\uparrow$</span></p>
+					</div>	
+					</div>
+				</section>
+
+				<section>
+					<h2>Action-Value Distribution</h2>
+					<div class="stretch">
+						<img src="rolls-royce/distributions.png"/>
+					</div>	
+				</section>
+
+				<section data-auto-animate data-menu-title="prelim res">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li style="color: #1F77B4;">Preliminary results</li>
+                        <li>Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+				</section>
+				<section>
+				<section data-auto-animate data-menu-title="prelim res">
+					<h2>
+					<ul>
+						<li>Why is ash a problem for engines?</li>
+						<li>Modelling ash clouds</li>
+						<li>Overview of Reinforcement learning</li>
+                        <li>Preliminary results</li>
+                        <li style="color: #1F77B4;">Where can we go from here?</li>
+					</ul>
+					</h2>
+				</section>
+
+				<section>
+					<h2>Conclusions</h2>
+					<ul>
+						<li class="fragment">Used distributional reinforcement learning to optimise the path through 2d ash cloud</li>
+						<li class="fragment">The distributions give us a way of assessing risk of accumulating large doses of ash</li>
+						<li class="fragment">This would need to be scaled up to 3D</li>
+						<li class="fragment">Would need to be trained to recognise general ash clouds rather than one instance (CNN)</li>
+						<li class="fragment">Integrate with existing methods of plotting aircraft trajectories (could significantly reduce the possible paths)</li>
+						<li class="fragment">Test different weightings between fuel consumption and ash dosage etc</li>
+					</ul>
+					<p class="fragment">
+						<br/>
+					If these things could be implemented, it would give the airlines a quantitative measure of risk to their engines for certain flight paths allowing them to make informed decisions.
+					</p>
+				</section>
+
+
+				<section>
+					<h2 style="color: #1F77B4;">
+						Thank you for listening!
+					</h2>
+					<h2 style="color: #FF8616;">
+						Any questions?
+					</h2>
+				</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/menu/menu.js"></script>
+		<script src="plugin/chalkboard/plugin.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1800,
+				height: 920,
+				slideNumber: 'c/t',
+
+				margin: 0.04,
+
+				menu: {
+					themes: true,
+					hideMissingTitles: true,
+				},
+
+                dependencies: [
+                    { src: 'https://d3js.org/d3.v4.min.js' },
+                    { src: 'plugin/d3js/d3js.js' },
+					{ src: 'plugin/reveald3.js' },
+                ],
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart, 
+							RevealMenu, RevealChalkboard, RevealMath, RevealZoom]
+			});
+		</script>
+	</body>
+</html>
