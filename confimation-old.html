@@ -32,62 +32,161 @@
     <div class="reveal">
         
         <div class="slides">
-            <section>
+            <section   data-menu-title="Title Slide">
                 <h2>Stochastic Active Flows</h2>
-                <h4>Stochastic Kinematic flows and Synchronisation arising from interacting particle systems</h4>
+                <h4>Stochastic Kinematic flows and synchronisation rising from interacting particle systems</h4>
                 <h3 style="color:#1F77B4">Jeremy Worsfold</h3>
                 <h4 style="color:#FF8616">Supervised by Tim Rogers and Paul Milewski</h4>
             </section>
-            <section data-auto-animate data-menu-title="Intro">
+            <section>
+            <section data-menu-title="Introduction">
+                <h2>
+                <ul>
+                    <li class="fragment highlight-current-blue">Interacting Particle Systems</li>
+                    <li>Swarming and Diffusion</li>
+                    <li>Synchronisation</li>
+                    <li>Future Work</li>
+                </ul>
+                </h2>
+            </section>
+            <section data-menu-title="Vehicle Traffic">
+                <h2>
+                    Formation of Traffic Jams
+                </h2>
+                <div class="container">
+                    <div class="col">
+                        <br/>
+                        <ul>
+                            <li>We have a finite number of cars</li>
+                            <li>Clearly they do not make perfect decisions otherwise we wouldn't see a jam</li>
+                            <li>Can we come up with simple rules to explain the jams forming and general behaviour</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <div class="stretch">
+                            <iframe width="700" height="400" data-src="https://www.youtube.com/embed/ZNLIoolCeKI"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-menu-title="Fireflies">
+                <h2>
+                    Synchronisation of Fireflies
+                </h2>
+                <div class="container">
+                    <div class="col">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <ul>
+                            <li>Not only are we interested in fluid-like flows, we are interested in <b style="color: #1F77B4;">synchronisation</b></li>
+                            <li>These are fireflies, they start of flashing at random times</li>
+                            <li>Slowly they "nudge" each other to synchronise up their flashes</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <div class="stretch">
+                            <video data-autoplay loop="true" src="conference/fireflies.mp4" width="100%"></video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-auto-animate   data-menu-title="How we model">
+                <h2>Generalised model of interacting particles</h2>
+                <p>Vehicles/Organisms are $N$ particles with positions $X_n\in[0,2\pi]$ for $n=1,\dots,N$</p>
+                <div data-id="sde">
+                    $$
+                    \mathrm{d}X_n = \frac{1}{N}\left[\sum_{m=1}^N f(X_m-X_n)\right] \mathrm{d}t + \frac{\sqrt{2D}}{N}\left[\sum_{m=1}^N g(X_m-X_n)\right]^{1/\beta}\mathrm{d}W_n
+                    $$
+                </div>
+            </section>
+
+            <section data-auto-animate   data-menu-title="Macroscopic to Mesoscopic">
+                <h2>From small scale to large scale</h2>
+                <div data-id="sde">
+                    $$
+                    \mathrm{d}X_n = \frac{1}{N}\left[\sum_{m=1}^N f(X_m-X_n)\right] \mathrm{d}t + \frac{\sqrt{2D}}{N}\left[\sum_{m=1}^N g(X_m-X_n)\right]^{1/\beta}\mathrm{d}W_n
+                    $$
+                </div>
+                <p>
+                Introduce a concept of density of particles:
+                $$
+                \varrho(x,t) = \frac{1}{N}\sum_{n=1}^N \delta_{X_n(t)}(x)
+                $$
+            </section>
+
+            <section>
+                <h2>Particle Density</h2>
+                <p>We want a nicer (smoother) way of representing the density</p>
+                <div class="container">
+                    <div class="col">
+                        <p style="color: #FF8616;">
+                            $$
+                            \int_A F(x) \varrho(x,t) \mathrm{d}{x}
+                            $$
+                        </p>
+                        <div class="stretch">
+                            <img data-src="aims/media/meso.png" style="width:360px;"/>
+                        </div>
+                        
+                    </div>
+                    <div class="col">
+                        <div class="fragment">
+                        <p style="color: #1F77B4;">
+                            $$
+                            \int_A F(x) \rho(x,t) \mathrm{d}{x}
+                            $$
+                        </p>
+
+                        <div class="stretch">
+                            <img data-src="aims/media/macro.png" style="width:360px;"/>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section   data-menu-title="Particle Density">
+                <h2>Particle Density</h2>
+                <div data-id="spde", style="color: #FF8616;">
+                $$
+                \rho_t + \underbrace{\frac{\partial}{\partial x}\left(\rho(f\ast\rho)\right)}_{\text{advection}} - \underbrace{D\frac{\partial^2}{\partial x^2}\left(\rho\left(g\ast\rho\right)^{2/\beta}\right)}_{\text{diffusion}} + \underbrace{\sqrt{\frac{2D}{N}}\frac{\partial}{\partial x}\left(\sqrt{\rho}(g\ast\rho)^{1/\beta}\eta\right)}_{\text{noise}} = 0
+                $$
+                </div>
+
+                <!--<p>
+                    $$
+                    (f\ast\rho)(x,t) = \int_{-\pi}^{\pi} f(y-x)\rho(y,t) \mathrm{d}y, \quad \langle \eta(x,t)\eta(y,s) \rangle = \delta(x-y)\delta(t-s)
+                    $$
+                </p>-->
+                <div class="fragment">
+                <p>
+                    The case where $g(x)=1$ and $\beta=1$, has been studied before (Dean 1996). 
+                </p>
+                <p>
+                    $$
+                    \mathrm{d}X_n = \frac{1}{N}\sum_{m=1}^N f(X_m-X_n) \mathrm{d}t + \frac{\sqrt{2D}}{N}\sum_{m=1}^N g(X_m-X_n)\mathrm{d}W_n
+                    $$
+                </p>
+                </div>
+            </section>
+            </section>
+
+            <section>
+            <section data-menu-title="Swarming and Diffusion">
                 <h2>
                 <ul>
                     <li>Interacting Particle Systems</li>
-                    <li>Swarming and Diffusion</li>
-                    <li>Synchronisation</li>
-                    <li>Future Work</li>
-                </ul>
-                </h2>
-            </section>
-            <section>
-            <section data-auto-animate>
-                <h2>
-                <ul>
-                    <li style="color: #1F77B4;">Interacting Particle Systems</li>
-                    <li>Swarming and Diffusion</li>
+                    <li class="fragment highlight-current-blue">Swarming and Diffusion</li>
                     <li>Synchronisation</li>
                     <li>Future Work</li>
                 </ul>
                 </h2>
             </section>
 
-            <section data-markdown="includes/section-1.md"></section>
-            <!--<section data-external-replace="includes/ips.html"></section>-->
-
-            <section data-auto-animate data-menu-title="Recap">
-                <h2>
-                <ul>
-                    <li style="color: #1F77B4;">Interacting Particle Systems</li>
-                    <li>Swarming and Diffusion</li>
-                    <li>Synchronisation</li>
-                    <li>Future Work</li>
-                </ul>
-                </h2>
-            </section>
-            </section>
-            <section>
-            <section data-auto-animate data-menu-title="Macroscopic Examples">
-                <h2>
-                <ul>
-                    <li>Interacting Particle Systems</li>
-                    <li style="color: #1F77B4;">Swarming and Diffusion</li>
-                    <li>Synchronisation</li>
-                    <li>Future Work</li>
-                </ul>
-                </h2>
-            </section>
-
-            <section data-state="head" data-menu-title="Swarming Example">
-                <style>.head header:after { content: "Macroscopic Examples"; }</style>
+            <section   data-menu-title="Swarming Example">
                 <h2>Swarming Model (Milewski 2008)</h2>
                 <p>Let's say we have some organisms, like fish, which move towards others in front (aggregation) of them but spread out if there are too many others close to them (diffusion).</p>
                 <div class="container">
@@ -130,50 +229,60 @@
                     </div>
                 </div>
             </section>
-            <section data-state="head" data-menu-title="Swarming Example">
-                <h2>What does this look like?</h2>
-                <div class="stretch">
-                    <video data-autoplay loop="true" src="conference/harold2.mp4" height="100%"></video>
+            <section>
+                <h2>Deterministic Shape and Fluctuations?</h2>
+                <div class="container">
+                    <div class="col">
+                        <h4 style="color: #FF8616;"><br/><br/>Just as with the other models in this section, the thermodynamic limit behaviour is known. The finite sized effects have not been studied</h4>
+                    </div>
+                    <div class="col">
+                        <div class="fragment" data-fragment-index="1">
+                            <div class="stretch">
+                                <img data-src="conference/swarmflucs1.png" width="500px"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fragment" data-fragment-index="1">
+                <p>
+                    Assume that the fluctuations take the following form:
+                </p>
+                <p style="color: #79b321;">
+                    $$
+                    \rho(x,t) = \rho^*(x,t) + \frac{1}{\sqrt{N}}\xi(x,t)
+                    $$
+                </p>
                 </div>
             </section>
-            <section data-auto-animate data-state="head" data-menu-title="Swarming Example">
+            <!--<section data-auto-animate   data-menu-title="Swarming Example">
                 <h2>Stochastic fluctuations</h2>
                 <div class="stretch" data-id="swarmfig">
                     <img data-src="conference/swarmflucs.png"/>
                 </div>
             </section>
-            <section data-auto-animate data-state="head" data-menu-title="Swarming Example">
+            <section data-auto-animate   data-menu-title="Swarming Example">
                 <h2>Stochastic fluctuations</h2>
                     <div class="stretch" data-id="swarmfig">
                         <img data-src="conference/swarmflucs0.png"/>
                     </div>
-            </section>
-            <section data-auto-animate data-state="head" data-menu-title="Swarming Example">
-                <h2>Stochastic fluctuations</h2>
-                <div class="stretch" data-id="swarmfig">
-                    <img data-src="conference/swarmflucs1.png"/>
-                </div>
-                <p>
-                Assume that the fluctuations take the following form:
-                $$
-                \rho(x,t) = \rho^*(x,t) + \frac{1}{\sqrt{N}}\xi(x,t)
-                $$
-                </p>
-            </section>
-            <section data-state="head" data-menu-title="Density Dependent Diffusion">
+            </section>-->
+            <section   data-menu-title="Density Dependent Diffusion">
                 <h2>Density dependent diffusion</h2>
-                <br /> 
                 <div class="container">
                     <div class="col">
+                        <p>
                         If we have $g(x)=\delta(x)$ for general $\beta$ then we have ($m=1+2/\beta$)
                         $$
                         \rho_t = D\left(\rho^m\right)_{xx}.
                         $$
-                        This is the porous media equation. Starting from a point source, when $\beta=1$ the solution is an ellipse
+                        </p>
+                        <p class="fragment">
+                        This is the <b style="color: #FF8616;">porous media equation</b>. Starting from a point source, when $\beta=1$ the solution is an ellipse
                         $$
                         \rho(x,t) = \frac{2}{\pi r(t)}\sqrt{1-\left(\frac{x}{r(t)}\right)^2}
                         $$
                         with $r(t) = 2\left(3Dt/\pi^2\right)^{1/4}$.
+                        </p>
                     </div>
                     <div class="col">
                         <div class="fragment">
@@ -184,15 +293,17 @@
                     </div>
                 </div>
             </section>
-            <section data-auto-animate data-state="head" data-menu-title="Ellipse Fluctuations">
+            <section data-auto-animate   data-menu-title="Ellipse Fluctuations">
                 <h2>Ellipse Fluctuations</h2>
                 <br /> 
                 <div class="container">
                     <div class="col">
-                        $$
-                        \rho_{t} - D(\rho^3)_{xx} + \sqrt{\frac{2D}{N}}\left(\rho^{\frac{3}{2}}\eta\right)_x = 0
-                        $$
-                        We use the same assumption for the form of the fluctuations as before...
+                        <p><br/>We use the same assumption for the form of the fluctuations as before:</p>
+                        <p style="color: #79b321;">
+                            $$
+                            \rho(x,t) = \rho^*(x,t) + \frac{1}{\sqrt{N}}\xi(x,t)
+                            $$
+                        </p>
                     </div>
                     <div class="col">
 
@@ -203,7 +314,7 @@
                 </div>
             </section>
 
-            <section data-auto-animate data-state="head" data-menu-title="Ellipse Fluctuations">
+            <section data-auto-animate>
                 <h2>Ellipse Fluctuations</h2>
                 <br /> 
                 <p style="color: #1F77B4;">
@@ -216,9 +327,9 @@
                 $$
                 M_n(t) := \int_{-\infty}^{\infty} x^n \rho(x,t) \mathrm{d}x
                 $$
-                </p>
-                <p data-id="flucs">
                 Fluctuations in the cumulative moments:
+                </p>
+                <p style="color: #79b321;">
                 $$
                 \begin{align}
                 \Xi_n(t) := \sqrt{N}\left(M_n(t) - M_n^*(t)\right) 
@@ -228,18 +339,13 @@
                 </p>
             </section>
 
-            <section data-state="head" data-menu-title="Ellipse Fluctuations">
+            <section >
                 <div class="container">
                     <div class="col">
                         <h2><br/>Fluctuations in the moments</h2>
-                        <p>
-                            $$
-                            \Xi_n(t) := \sqrt{N}\left(M_n(t) - M_n^*(t)\right)
-                            $$
-                        </p>
                         <p style="color: #1F77B4;">
                             $$
-                            \Rightarrow \Xi_n'(t) = \frac{n(n-1)}{4t}\left[r^2 \Xi_{n-2} - \Xi_n\right] + \zeta_n
+                            \Xi_n'(t) = \frac{n(n-1)}{4t}\left[r^2 \Xi_{n-2} - \Xi_n\right] + \zeta_n
                             $$
                         </p>
                         <p>
@@ -255,7 +361,7 @@
                 </div>
             </section>
 
-            <section data-auto-animate data-state="head" data-menu-title="Whitham Model">
+            <section data-auto-animate   data-menu-title="Traffic Model">
                 <h2 data-id="title">LWR Model of Traffic (1955)</h2>
                 <p>Particles now describe the flow of cars along a single lane road</p>
                 <p>
@@ -270,8 +376,8 @@
                 </p>
             </section>
 
-            <section data-auto-animate data-state="head" data-menu-title="Fluctuations">
-                <h2>Quantifying the Fluctuations</h2>
+            <section data-auto-animate>
+                <h2>LWR Model of Traffic (1955)</h2>
                 <p>
                     The LWR model has a stable, uniform state.
                 </p>
@@ -285,38 +391,31 @@
                         </div>
                     </div>
                     <div class="col">
-                        <p class="fragment">
+                        <p class="fragment" style="color: #79b321;">
                             $$
                             \rho(x,t) = \frac{1}{2\pi} + \frac{1}{\sqrt{N}}\xi(x,t)
                             $$
+                        </p>
+                        <p class="fragment">
                             Given we can see the fluctuations create waves, we analyse them in Fourier space
                         </p>
                     </div>
                 </div>
             </section>
-            <section data-auto-animate data-menu-title="Recap">
-                <h2>
-                <ul>
-                    <li>Interacting Particle Systems</li>
-                    <li style="color: #1F77B4;">Swarming and Diffusion</li>
-                    <li>Synchronisation</li>
-                    <li>Future Work</li>
-                </ul>
-                </h2>
             </section>
-            </section>
+
             <section>
-            <section data-auto-animate data-menu-title="Finite-sized effects">
+            <section data-menu-title="Synchronisation">
                 <h2>
                 <ul>
                     <li>Interacting Particle Systems</li>
                     <li>Swarming and Diffusion</li>
-                    <li style="color: #1F77B4;">Synchronisation</li>
+                    <li class="fragment highlight-blue">Synchronisation</li>
                     <li>Future Work</li>
                 </ul>
                 </h2>
             </section>
-            <section data-state="head" data-menu-title="Kuramoto">
+            <section   data-menu-title="Kuramoto">
                 <h2>Kuramoto Model</h2>
                 <div class="container">
                     <div class="col">
@@ -324,7 +423,7 @@
                         <div class="stretch">
                             <video data-autoplay loop="true" src="conference/kuramoto.mp4" width="70%"></video>
                         </div>
-                        <p style="font-size: 80%;">synchronisation over time of oscillators in the Kuramoto model (colour refers to intrinsic frequency, $\omega_n\sim\chi(\omega$)</p>
+                        <p style="font-size: 80%;">synchronisation of oscillators in the Kuramoto model (colour refers to intrinsic frequency, $\omega_n\sim\chi(\omega$)</p>
                         </div>
                     </div>
                     <div class="col">
@@ -342,7 +441,7 @@
                     </div>
                 </div>
             </section>
-            <section data-state="head" data-menu-title="Kuramoto">
+            <section data-menu-title="Worsfold Model">
                 <h2>Worsfold Noise Model</h2>
                 <div class="container">
                     <div class="col">
@@ -350,7 +449,7 @@
                         <div class="stretch">
                             <video data-autoplay loop="true" src="conference/cosine-identical.mp4" width="70%"></video>
                         </div>
-                        <p style="font-size: 80%;">synchronisation over time of oscillators in the Worsfold model</p>
+                        <p style="font-size: 80%;">synchronisation of oscillators in the Worsfold model</p>
                         </div>
                     </div>
                     <div class="col">
@@ -366,7 +465,7 @@
                     </div>
                 </div>
             </section>
-            <section data-auto-animate data-state="head">
+            <section data-auto-animate data-menu-title="Worsfold Model plot">
                 <h3 style="color:#FF8616;">$\boldsymbol{\kappa}\boldsymbol{=}\mathbf{2.5}$</h3>
                 <div class="stretch">
                     <div data-id="pic">
@@ -374,7 +473,7 @@
                     </div>
                 </div>
             </section>
-            <section data-auto-animate data-state="head" data-menu-title="Diffusion Term">
+            <section data-auto-animate>
                 <h2>Cosine Noise Coupling</h2>
                 <div class="container">
                     <div class="col">
@@ -405,7 +504,7 @@
                     </div>
                 </div>
 				</section>
-                <section data-state="head">
+                <section  data-menu-title="Passage Times">
 					<h2>What about stray particles?</h3>
                     <div class="container">
 						<div class="col">
@@ -433,32 +532,21 @@
                         </div>
 					</div>
 				</section>
+                </section>
 
-                <section data-auto-animate data-menu-title="Recap">
-                    <h2>
-                    <ul>
-                        <li>Interacting Particle Systems</li>
-                        <li>Swarming and Diffusion</li>
-                        <li style="color: #1F77B4;">Synchronisation</li>
-                        <li>Future Work</li>
-                    </ul>
-                    </h2>
-                </section>
-                </section>
                 <section>
-                <section data-auto-animate data-menu-title="Synchronisation">
+                <section data-menu-title="Future Work">
                     <h2>
                     <ul>
                         <li>Interacting Particle Systems</li>
                         <li>Swarming and Diffusion</li>
                         <li>Synchronisation</li>
-                        <li style="color: #1F77B4;">Future Work</li>
+                        <li class="fragment highlight-current-blue">Future Work</li>
                     </ul>
                     </h2>
                 </section>
-
-                <section data-state="head">
-					<h2>Low dimensional dynamics</h3>
+                <section data-menu-title="Low dimensional dynamics">
+					<h2>Low dimensional dynamics</h2>
                     <p>
                         The Worsfold model has the same stability as the Kuramoto model about the homogeneous state. Looks very different away from that state though.
                     </p>
@@ -467,32 +555,32 @@
                     </p>
 				</section>
 
-                <section data-auto-animate data-state="head">
-					<h2>Ott and Antonsen (2008)</h3>
+                <section data-auto-animate data-menu-title="Ott Antonsen">
+					<h2>Ott and Antonsen (2008)</h2>
                     <p class="fragment">
                         $$
-                        \frac{\mathrm{d}X_n}{\mathrm{d}t} = \omega_0 + \frac{K}{N}\sum_m \sin(X_m-X_n)
+                        \mathrm{d}X_n = [\omega_0 + K/N\sum_m \sin(X_m-X_n)]\mathrm{d}t
                         $$
                     </p>
                     <p class="fragment">
                         defining $re^{-i\psi}=\int_{-\pi}^\pi \rho e^{-ix}\mathrm{d}x$, (the first Fourier mode):
                         $$
-                        \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[\rho (\omega_0 + r\sin(\psi-x))\right]= 0
+                        \partial_t\rho + \partial_x\left[\rho (\omega_0 + r\sin(\psi-x))\right]= 0
                         $$
                         $$
-                        \dot{\hat{\rho}}_k + ik\omega_0\hat{\rho}_k + ik\frac{Kr}{2}\left[e^{i\psi}\hat{\rho}_{k+1} - e^{-i\psi}\hat{\rho}_{k-1}\right] = 0
+                        \dot{\hat{\rho}}_k + ik\omega_0\hat{\rho}_k + k\frac{Kr}{2}\left[e^{i\psi}\hat{\rho}_{k+1} - e^{-i\psi}\hat{\rho}_{k-1}\right] = 0
                         $$
                     </p>
                     <p class="fragment">
-                        Ott-Antonsen ansatz: $\hat{\rho}_k = a^k,a=re^{i\psi}$
+                        Ott-Antonsen ansatz: $\hat{\rho}_k = a^k,a=re^{-i\psi}$
                         $$
-                        \dot{r} = \frac{Kr}{2}(r^2-1), \qquad \dot{\psi}=\omega_0
+                        \dot{r} = \frac{Kr}{2}(1-r^2), \qquad \dot{\psi}=\omega_0
                         $$
                     </p>
 				</section>
 
-                <section data-auto-animate data-state="head">
-					<h2>Ott and Antonsen (2008)</h3>
+                <section data-auto-animate>
+					<h2>Ott and Antonsen (2008)</h2>
                     <h4 style="color: #FF8616;">
                         This also works if the frequencies are random! (sampled from a Lorentzian distribution)
                     </h4>
@@ -504,8 +592,8 @@
                     </h4>
 				</section>
 
-                <section data-auto-animate data-state="head">
-					<h2>Low dimensional dynamics pt 2</h3>
+                <section data-auto-animate data-menu-title="Low dimensional dynamics pt. 2">
+					<h2>Low dimensional dynamics pt 2</h2>
                     <h4 style="color: #1F77B4;">
                         ...No...we don't think so.
                     </h4>
@@ -516,10 +604,10 @@
                         Worsfold model has diffusion which gives $k^2$.
                     </p>
                     <p>
-                        Ongoing research into non-brownian noise. These can result in terms with $|k|$ instead of $k^2$ which can then be described with the other parameters $r,\psi$.
+                        Ongoing research into non-brownian noise. These can result in terms with $|k|$ instead of $k^2$ which can could be described with the order parameters like $r,\psi$.
                     </p>
 				</section>
-                <section data-auto-animate data-state="head" data-menu-title="Velocity Models">
+                <section data-auto-animate   data-menu-title="Velocity Models">
                     <h2>Incorporating Velocity</h2>
     
                     <p>
@@ -533,7 +621,7 @@
                     </p>
                 </section>
 
-                <section data-auto-animate data-state="head" data-menu-title="Velocity Models">
+                <section data-auto-animate>
                     <h2>Incorporating Velocity</h2>
     
                     <p>
@@ -547,7 +635,7 @@
                     </p>
                 </section>
 
-                <section data-auto-animate data-state="head" data-menu-title="Velocity Models">
+                <section>
                     <h2>Recap</h2>
                     <h4 style="color: #FF8616;">
                     <ul>
@@ -560,9 +648,9 @@
                         <li>Including the finite sized effects </li>
                         </div>
                         <div class="fragment">
-                        <li>Developed a model for Synchronisation without deterministic coupling</li>
+                        <li>Developed a model for synchronisation without deterministic coupling</li>
                         <li>Analysed its behaviour</li>
-                        <li>Explored ways in which it (or other models) can be described by a single order parameter</li>
+                        <li>Explored ways in which it (or other models) can be described by order parameters</li>
                         </div>
                     </ul>
                     </h4>
@@ -573,7 +661,7 @@
                         Thank you for listening!
                     </h2>
                     <h2 style="color: #FF8616;">
-                        Does anyone have any questions?
+                        Any questions?
                     </h2>
                 </section>
                 </section>
@@ -599,23 +687,17 @@
             width: 1800,
             height: 920,
             slideNumber: 'c/t',
-            loop: true,
+            //loop: true,
 
             margin: 0.04,
 
             menu: {
+                titleSelector: '',
                 themes: true,
                 hideMissingTitles: true,
             },
 
-            dependencies: [
-                {src: 'plugin/title-footer/title-footer.js', 
-                    async: true, callback: function() { title_footer.initialize(); } 
-                },
-                {src: 'plugin/external/external.js',
-                    condition: function() { return !!document.querySelector( '[data-external],[data-external-replace]' );}
-				}
-        ],
+            dependencies: [{ src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } }],
 
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart, 
