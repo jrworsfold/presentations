@@ -1,18 +1,10 @@
 @charset "UTF-8";
-/**
- * Dracula Dark theme for reveal.js.
- * Based on https://draculatheme.com
- */
-/**
- * Dracula colors by Zeno Rocha
- * https://draculatheme.com/contribute
- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html * {
   color-profile: sRGB;
   rendering-intent: auto;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #282A36;
