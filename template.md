@@ -13,7 +13,7 @@
 
 ---
 
-<section data-background-image="church/back.jpg">
+<section data-background-image="church/back.png">
 
 ## Galatians 5:12-25
 
