@@ -16,7 +16,7 @@
 
 ---
 
-<section data-background-image="church/back-2.jpg">
+<section data-background-image="church/back.jpg">
 
 ## Galatians 5:12-25
 
@@ -89,8 +89,6 @@ my body relaxes, safe in your care. ​
 You set my feet on a life-giving track, Lord.​
 To be in your presence is absolute bliss.​
 All I could dream of comes from your hand. ​
-
-©2001 Nathan Nettleton Laughing Bird.​
 
 <div style="text-align: right; font-size: small; vertical-align: bottom;">©2001 Nathan Nettleton Laughing Bird.​</div>
 
