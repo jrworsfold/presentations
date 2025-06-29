@@ -33,6 +33,8 @@ __Praise to you O' Jesus Christ__
 
 ---
 
+
+
 This is the place and this is the time;​
 
 **HERE AND NOW GOD WAITS​ TO BREAK INTO OUR EXPERIENCE​**
@@ -44,6 +46,8 @@ To change our minds. To change our lives,
 To make us see the world​. And the whole of life in a new light.​
 
 **TO FILL US WITH HOPE, JOY ​AND CERTAINTY FOR THE FUTURE​**
+
+
 
 
 ---
