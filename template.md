@@ -11,9 +11,6 @@
 
 ### Shine Jesus Shine
 
-
-<div style="text-align: left; font-size: smaller">1: Low-Code/No-Code</div>
-
 ---
 
 <section data-background-image="church/back.jpg">
@@ -72,22 +69,29 @@ Those who worship other things​ will have nothing but grief.​
 ---
 
 You are all I want, Lord, and all I need;​
+
 you hold my future in your hands. ​
+
 You mark out the best of everything for me;​
+
 you’ve set me up with a bright future.​
-I heap accolades on you, Lord,​
-for you always give me wise advice;​
-even in the dead of night​
-you fill my heart with your teachings. ​
+
+I heap accolades on you, Lord,​ for you always give me wise advice;​
+even in the dead of night​ you fill my heart with your teachings. ​
 
 ---
 
 I’ll never be pushed off track. ​
+
 You fill me with delight, Lord;​
+
 joy erupts from deep in my bones;​
-my body relaxes, safe in your care. ​
+my body relaxes, safe in your care.
+
 You set my feet on a life-giving track, Lord.​
+
 To be in your presence is absolute bliss.​
+
 All I could dream of comes from your hand. ​
 
 <div style="text-align: right; font-size: small; vertical-align: bottom;">©2001 Nathan Nettleton Laughing Bird.​</div>
