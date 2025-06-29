@@ -92,7 +92,7 @@ All I could dream of comes from your hand. ​
 
 ©2001 Nathan Nettleton Laughing Bird.​
 
-<div style="text-align: left; font-size: small; vertical-align: bottom;">©2001 Nathan Nettleton Laughing Bird.​</div>
+<div style="text-align: right; font-size: small; vertical-align: bottom;">©2001 Nathan Nettleton Laughing Bird.​</div>
 
 
 ---
