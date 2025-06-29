@@ -12,6 +12,7 @@
 ### Shine Jesus Shine
 
 
+<div style="text-align: left; font-size: smaller">1: Low-Code/No-Code</div>
 
 ---
 
@@ -90,6 +91,9 @@ To be in your presence is absolute bliss.​
 All I could dream of comes from your hand. ​
 
 ©2001 Nathan Nettleton Laughing Bird.​
+
+<div style="text-align: left; font-size: smaller">©2001 Nathan Nettleton Laughing Bird.​</div>
+
 
 ---
 
