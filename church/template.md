@@ -1,28 +1,9 @@
----
-title: "SSUC"
-format:
-  revealjs:
-    logo: prayer.jpg
-    footer: "SSUC"
----
-
-## slide 1
-
-test_1[ [^1] ]{.hideme}[^\[1-3\]^]{.redme}
-
-::: aside
-Some additional commentary of more peripheral interest.
-:::
-
----
-
 ## South Sydney Uniting Church
 
 ### 29 June 2025
 
 ---
 
-<!-- .element: data-background-image="bible-reading.jpg" -->
 ## Acknowledgement of Country
 
 
