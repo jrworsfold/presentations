@@ -15,7 +15,7 @@
 
 ---
 
-<section data-background-image="church/bible-reading.jpg">
+<section data-background-image="church/prayer.jpg">
 
 ## Galatians 5:12-25
 
