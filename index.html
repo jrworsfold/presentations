@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
 		<meta name="viewport" content="width=device-width">
 
 		<title>South Sydney Uniting Church</title>
@@ -16,9 +15,8 @@
 		<div class="reveal">
 			
 			<div class="slides">
-				<!-- data-background-image="church/back2.png" -->
 				<section
-				data-markdown="index.md"
+				data-markdown="services/index.md"
 				data-separator="---"
 				data-background-image="assets/background.png"
 				>
@@ -26,12 +24,9 @@
             </div>
 		</div>
 
-		<script src="../dist/reveal.js"></script>
-		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: false,
 				width: 1400,
@@ -46,11 +41,6 @@
 				transitionSpeed: 'fast',
 
 				progress: false,
-				// menu: {
-				// 	themes: false,
-				// 	hideMissingTitles: true,
-				// },
-				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown ]
 			});
 		</script>
