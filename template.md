@@ -20,6 +20,16 @@
 God's word made new.
 
 __Praise to you O' Jesus Christ__
+</section>
+---
+
+<section data-background-image="church/reading.png">
+
+## John 10:22-30
+
+The good news and power of God
+
+**Praise to You O' Jesus Christ.**
 
 </section>
 
@@ -31,6 +41,43 @@ __Praise to you O' Jesus Christ__
 
 ---
 
+
+<img class="r-stretch" src="church/lost sheep.jpg" />
+
+
+---
+
+Father and Mother of us all, may all proclaim your worth.
+
+Your kingdom come, your will be honoured 
+
+in heaven and on Earth.
+
+Give us today the things we need, 
+
+our shelter, our money, our food. 
+
+Forgive us our debts as we agree to treat others as you would.
+
+---
+
+Lead us in ways that do not tempt us or put us to the test.
+
+Save us from faults or compromise 
+
+that would rob us of our best.
+
+For you are the heart of the kingdom, 
+
+your power and glory extend
+
+through time and space forever and ever, and so shall it be. 
+
+Amen.
+
+`Alison Jones (Clark) © 2016.`
+
+---
 
 
 This is the place and this is the time;​
