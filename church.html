@@ -16,15 +16,11 @@
 		<div class="reveal">
 			
 			<div class="slides">
+				<!-- data-background-image="church/back2.png" -->
 				<section
 				data-markdown="template.md"
-				data-background-image="church/back2.png"
 				data-separator="---"
 				>
-				<!--
-						Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
-						For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
-					-->
 				</section>
             </div>
 		</div>
@@ -36,20 +32,23 @@
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
-				width: 1200,
-				height: 765,
+				hash: false,
+				width: 1400,
+				height: 800,
 
-				margin: 0.15,
+				margin: 0.08,
 
 				minScale: 0.2,
   				maxScale: 2.0,
 
-				menu: {
-					themes: true,
-					hideMissingTitles: true,
-				},
+				transition: 'none',
+				transitionSpeed: 'fast',
 
+				progress: false,
+				// menu: {
+				// 	themes: false,
+				// 	hideMissingTitles: true,
+				// },
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown ]
 			});

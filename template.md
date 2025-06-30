@@ -13,7 +13,7 @@
 
 ---
 
-<section data-background-image="church/back.png">
+<section data-background-image="church/bible-reading.jpg">
 
 ## Galatians 5:12-25
 
@@ -86,6 +86,7 @@ I’ll never be pushed off track. ​
 You fill me with delight, Lord;​
 
 joy erupts from deep in my bones;​
+
 my body relaxes, safe in your care.
 
 You set my feet on a life-giving track, Lord.​
@@ -94,14 +95,64 @@ To be in your presence is absolute bliss.​
 
 All I could dream of comes from your hand. ​
 
-<div style="text-align: right; font-size: small; vertical-align: bottom;">©2001 Nathan Nettleton Laughing Bird.​</div>
-
+`©2001 Nathan Nettleton Laughing Bird`
 
 ---
 
-## slide 1
+God sends us his Spirit ​
 
-test[^1]
+to befriend and help us,​
 
-[^1]: footnote1
+re-created and guide us, Spirit-friend.​
 
+Spirit who enlivens, sanctifies, enlightens​
+
+sets us free, is now our Spirit-friend.​
+
+Spirit of our Father, Spirit-friend,​
+
+Spirit of our Jesus, Spirit-friend,​
+
+Spirit of God’s people, Spirit-friend.
+
+---
+
+Darkened roads are clearer,​
+
+heavy burdens lighter​
+
+when we’re walking with our Spirit-friend:​
+
+now we need not fear ​
+
+the powers of the darkness:​
+
+none can overcome our Spirit-friend,​
+
+Spirit of our Mother, Spirit-friend,​
+
+Spirit of our Jesus, Spirit-friend,​
+
+Spirit of God’s people, Spirit-friend.​
+
+---
+
+Now we are God’s people, 
+
+bonded by God’s presence,​
+
+agents of God’s purpose, Spirit-friend:​
+
+lead us forward ever,​
+
+slipping backward never,​
+
+To your re-made world, our Spirit-friend,​
+
+Spirit of Creator, Spirit-friend,​
+
+Spirit of our Jesus, Spirit-friend,​
+
+Spirit of God’s people, Spirit-friend.​
+
+`Tom Colvin. Lyric reprinted with permission under ONE LICENSE License # A-737036. All rights reserved​`

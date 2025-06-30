@@ -27,7 +27,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: none;
-  --r-heading-text-shadow: 20px;
+  --r-heading-text-shadow: 0.05em 0.05em 0.04em #222222;
   --r-heading-font-weight: bold;
   --r-heading1-text-shadow: none;
   --r-heading1-size: 3.77em;
@@ -50,7 +50,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal {
   font-family: var(--r-main-font);
   font-size: var(--r-main-font-size);
-  font-weight: medium;
+  font-weight: 500;
+  text-shadow: 0.05em 0.05em 0.04em #222222;
   color: var(--r-main-color);
 }
 
@@ -223,7 +224,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal code {
   font-family: var(--r-code-font);
   text-transform: none;
+  text-align: right;
+  vertical-align: bottom;
   tab-size: 2;
+  font-size: 0.4em;
 }
 
 .reveal pre code {
