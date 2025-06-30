@@ -230,22 +230,6 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-size: 0.4em;
 }
 
-.reveal pre code {
-  display: block;
-  padding: 5px;
-  overflow: auto;
-  max-height: 400px;
-  word-wrap: normal;
-}
-
-.reveal .code-wrapper {
-  white-space: normal;
-}
-
-.reveal .code-wrapper code {
-  white-space: pre;
-}
-
 
 .reveal sup {
   vertical-align: super;

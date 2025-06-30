@@ -2,68 +2,56 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+		<meta name="viewport" content="width=device-width">
 
-		<title>reveal.js</title>
-
+		<title>South Sydney Uniting Church</title>
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/personal.css" id="theme">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/dracula.css" id="highlight-theme">
-
-		<style>
-		.container{
-			display: flex;
-		}
-		.col{
-			flex: 1;
-		}
-		</style>
+		<link rel="stylesheet" href="css/theme.css" id="theme">
 
 	</head>
 	<body>
 		<div class="reveal">
 			
 			<div class="slides">
-				<section>
-                    <h2 style="color: #FF8616;">Presentations</h2>
-                    <h3>
-                    <ul>
-                        <li><a href="cncb.html">Centre for Networks and Collective Behaviour talk</a></li>
-                        <li><a href="aims.html">AIMS talk</a></li>
-                        <li><a href="pss.html">Bath Prograduate Student Seminars talk</a></li>
-                    </ul>
-                    </h3>
-                </section>
+				<!-- data-background-image="church/back2.png" -->
+				<section
+				data-markdown="index.md"
+				data-separator="---"
+				data-background-image="assets/background.png"
+				>
+				</section>
             </div>
 		</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script src="plugin/chalkboard/plugin.js"></script>
-		<script src="plugin/zoom/zoom.js"></script>
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
-				width: 1800,
-				height: 920,
+				hash: false,
+				width: 1400,
+				height: 800,
 
-				margin: 0.04,
+				margin: 0.15,
 
-				menu: {
-					themes: true,
-					hideMissingTitles: true,
-				},
+				minScale: 0.2,
+  				maxScale: 2.0,
 
+				transition: 'none',
+				transitionSpeed: 'fast',
+
+				progress: false,
+				// menu: {
+				// 	themes: false,
+				// 	hideMissingTitles: true,
+				// },
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChalkboard,  RevealZoom ]
+				plugins: [ RevealMarkdown ]
 			});
 		</script>
 	</body>

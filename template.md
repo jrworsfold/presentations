@@ -1,6 +1,6 @@
-## South Sydney Uniting Church
+# South Sydney Uniting Church
 
-### 29 June 2025
+### DATE
 
 ---
 
@@ -9,23 +9,14 @@
 
 ---
 
-### Shine Jesus Shine
+Song one
 
 ---
 
-<section data-background-image="church/bible-reading.jpg">
+<!-- change the background image using html. Just make sure the corresponding image is in assets  -->
+<section data-background-image="assets/reading.png">
 
-## Galatians 5:12-25
-
-God's word made new.
-
-__Praise to you O' Jesus Christ__
-</section>
----
-
-<section data-background-image="church/reading.png">
-
-## John 10:22-30
+## READING 1
 
 The good news and power of God
 
@@ -41,9 +32,13 @@ The good news and power of God
 
 ---
 
+Sermon with artwork
 
-<img class="r-stretch" src="church/lost sheep.jpg" />
+<img class="r-stretch" src="assets/lost sheep.jpg" />
 
+---
+
+Prayers
 
 ---
 
@@ -79,127 +74,50 @@ Amen.
 
 ---
 
+## Communion
 
-This is the place and this is the time;​
+Liturgy
 
-**HERE AND NOW GOD WAITS​ TO BREAK INTO OUR EXPERIENCE​**
-
-To change our minds. To change our lives,
-
-**TO CHANGE OUR WAYS​**
-
-To make us see the world​. And the whole of life in a new light.​
-
-**TO FILL US WITH HOPE, JOY ​AND CERTAINTY FOR THE FUTURE​**
-
-
-
+**Responses in bold**
 
 ---
 
-Protect me, God,​
-
-**You are my place of refuge.​**
-
-I’m acknowledging you ​as the one in charge, Lord;​
-
-**you are the best thing that’s ever happened to me.**
-
-I delight in the company of those​ who dedicate themselves to you;
-
-**they are the salt of the earth.​**
-
-Those who worship other things​ will have nothing but grief.​
-
-**I will not buy into their futile devotions;​ I will not utter the names they revere.​**
+Offering
 
 ---
 
-You are all I want, Lord, and all I need;​
+Song 2
 
-you hold my future in your hands. ​
+Each line separated by a blank line
 
-You mark out the best of everything for me;​
-
-you’ve set me up with a bright future.​
-
-I heap accolades on you, Lord,​ for you always give me wise advice;​
-even in the dead of night​ you fill my heart with your teachings. ​
+`© Year name and license`
 
 ---
 
-I’ll never be pushed off track. ​
-
-You fill me with delight, Lord;​
-
-joy erupts from deep in my bones;​
-
-my body relaxes, safe in your care.
-
-You set my feet on a life-giving track, Lord.​
-
-To be in your presence is absolute bliss.​
-
-All I could dream of comes from your hand. ​
-
-`©2001 Nathan Nettleton Laughing Bird`
+## Announcements
 
 ---
 
-God sends us his Spirit ​
-
-to befriend and help us,​
-
-re-created and guide us, Spirit-friend.​
-
-Spirit who enlivens, sanctifies, enlightens​
-
-sets us free, is now our Spirit-friend.​
-
-Spirit of our Father, Spirit-friend,​
-
-Spirit of our Jesus, Spirit-friend,​
-
-Spirit of God’s people, Spirit-friend.
+Song 3 
 
 ---
 
-Darkened roads are clearer,​
+Koe Atua Lilifu, 
 
-heavy burdens lighter​
+Fakamonuina mai tau mena kai nei.
 
-when we’re walking with our Spirit-friend:​
+Fakaue lahi mahaki toili. 
 
-now we need not fear ​
+Amene.
 
-the powers of the darkness:​
 
-none can overcome our Spirit-friend,​
+*Beloved God,*
 
-Spirit of our Mother, Spirit-friend,​
+*Bless this food we are about to receive.*
 
-Spirit of our Jesus, Spirit-friend,​
+*Thank you for giving it to us.*
 
-Spirit of God’s people, Spirit-friend.​
+*Amen.*
 
----
+`Arlo, a Niuean Grace`
 
-Now we are God’s people, 
-
-bonded by God’s presence,​
-
-agents of God’s purpose, Spirit-friend:​
-
-lead us forward ever,​
-
-slipping backward never,​
-
-To your re-made world, our Spirit-friend,​
-
-Spirit of Creator, Spirit-friend,​
-
-Spirit of our Jesus, Spirit-friend,​
-
-Spirit of God’s people, Spirit-friend.​
-
-`Tom Colvin. Lyric reprinted with permission under ONE LICENSE License # A-737036. All rights reserved​`
