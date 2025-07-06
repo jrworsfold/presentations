@@ -1,73 +1,124 @@
+## Smaller heading
+
+normal left-aligned text.
+
+new line with backslash or blank line.\
+**Bold text for responses**
+
+> centered text
+
+*alternative text color*
+
+`copyright for song`
+
+---
+
 # South Sydney Uniting Church
 
-### DATE
-
----
-
-## Acknowledgement of Country
-
-
----
-
-Song one
+### 13th July
 
 ---
 
 <!-- change the background image using html. Just make sure the corresponding image is in assets  -->
-<section data-background-image="assets/reading.png">
+<section data-background-image="assets/candle.jpg">
 
-## READING 1
-
-The good news and power of God
-
-**Praise to You O' Jesus Christ.**
+## Lighting of the Christ Candle
 
 </section>
 
 ---
 
-## Affirmation of Faith
-
-**We believe in one God**
+## Acknowledgement of Country
 
 ---
 
-Sermon with artwork
+Song One
 
-<img class="r-stretch" src="assets/lost sheep.jpg" />
-
----
-
-Prayers
+`© Year name and license`
 
 ---
 
-Father and Mother of us all, may all proclaim your worth.
-
-Your kingdom come, your will be honoured 
-
-in heaven and on Earth.
-
-Give us today the things we need, 
-
-our shelter, our money, our food. 
-
-Forgive us our debts as we agree to treat others as you would.
+# Welcome
 
 ---
 
-Lead us in ways that do not tempt us or put us to the test.
+<section data-background-image="assets/prayers.jpg">
 
-Save us from faults or compromise 
+# Prayers
 
-that would rob us of our best.
+</section>
 
-For you are the heart of the kingdom, 
+---
 
-your power and glory extend
+<section data-background-image="assets/reading.png">
 
-through time and space forever and ever, and so shall it be. 
+> Hallelujah!  Hallelujah!
 
+> Hallelujah!  Hallelujah!
+
+</section>
+---
+
+<section data-background-image="assets/reading.png">
+
+## Gospel Reading
+
+> **Glory to you, O Jesus Christ**
+
+> The good news and power of God.
+
+> **Praise to you O Jesus Christ**
+
+
+</section>
+
+---
+
+# Sermon
+
+
+---
+
+<section data-background-image="assets/offering.jpg">
+
+# Offering
+
+</section>
+
+---
+
+# Announcements
+
+---
+
+<section data-background-image="assets/prayers.jpg">
+
+
+# Prayers of the People
+
+</section>
+
+---
+
+Father and Mother of us all, \
+may all proclaim your worth. \
+Your kingdom come, your will be honoured \
+in heaven and on Earth. \
+Give us today the things we need, \
+our shelter, our money, our food. \
+Forgive us our debts as we agree \
+to treat others as you would.
+
+---
+
+Lead us in ways that do not tempt us \
+or put us to the test. \
+Save us from faults or compromise \
+that would rob us of our best. \
+For you are the heart of the kingdom, \
+your power and glory extend \
+through time and space forever and ever, \
+and so shall it be. \
 Amen.
 
 `Alison Jones (Clark) © 2016.`
@@ -82,33 +133,17 @@ Liturgy
 
 ---
 
-Offering
+# Blessing
 
 ---
 
-Song 2
+**Koe Atua Lilifu,**
 
-Each line separated by a blank line
+**Fakamonuina mai tau mena kai nei.**
 
-`© Year name and license`
+**Fakaue lahi.**
 
----
-
-## Announcements
-
----
-
-Song 3 
-
----
-
-Koe Atua Lilifu, 
-
-Fakamonuina mai tau mena kai nei.
-
-Fakaue lahi mahaki toili. 
-
-Amene.
+**Amene.**
 
 
 *Beloved God,*
