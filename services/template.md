@@ -118,14 +118,20 @@ that would rob us of our best. \
 For you are the heart of the kingdom, \
 your power and glory extend \
 through time and space forever and ever, \
-and so shall it be. \
-Amen.
+and so shall it be. Amen.
 
 `Alison Jones (Clark) © 2016.`
 
 ---
 
+<section data-background-image="assets/communion.jpeg">
+
 ## Communion
+</section>
+
+---
+
+
 
 Liturgy
 

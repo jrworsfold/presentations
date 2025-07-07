@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap'); */
 
@@ -16,32 +15,92 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 :root {
-  --r-background-color: #002b36;
-  --r-main-font: Montserrat, helvetica neue, helvetica, Cantarell, Ubuntu Medium, roboto, noto, arial, sans-serif;
-  --r-main-font-size: 62px;
   --r-main-color: #eee8d5;
-  --r-block-margin: 0px;
-  --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: Montserrat, Helvetica;
-  --r-heading-color: #eee8d5;
-  --r-heading-line-height: 1.3;
-  --r-heading-letter-spacing: normal;
-  --r-heading-text-transform: none;
-  --r-heading-text-shadow: 0.05em 0.05em 0.04em #002b36;
-  --r-heading-font-weight: bold;
-  --r-heading1-text-shadow: 0.06em 0.06em 0.05em #002b36;
-  --r-heading1-size: 2.3em;
-  --r-heading2-size: 1.5em;
-  --r-heading3-size: 1.2em;
-  --r-heading4-size: 1em;
-  --r-code-font: Montserrat, sans-serif, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-  --r-link-color: #bab9fe;
-  --r-link-color-dark: rgb(67, 216, 249);
-  --r-link-color-hover: #8BE9FD;
-  --r-selection-background-color: #44475A;
-  --r-selection-color: #fff;
+  --response-color: #EF7B45;
+  --r-other-color: #bab9fe;
+  --r-background-color: #002b36;
+  
+  --r-main-font-size: 62px;
+  --r-main-font: Montserrat, helvetica, arial, sans-serif;
+  --r-line-height: 1.5;
+  --r-left-margin: 30px;
+  
+  
+  --r-heading-font: var(--r-main-font);
+  --r-heading-color: var(--r-main-color);
+  --r-heading-size: 2.3em;
+  --r-heading-text-shadow: 0.06em 0.06em 0.05em var(--r-background-color);
+
+  --r-copyright-font-size: 0.45em;
 }
 
+ /* normal text */
+.reveal p {
+  line-height: var(--r-line-height);
+  text-align: left;
+  margin-left: var(--r-left-margin);
+}
+
+/* bold text for responses */
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+  color: var(--response-color);
+}
+
+
+/* small Copyright text */
+.reveal code {
+  font-size: var(--r-copyright-font-size);
+  color: var(--r-other-color);
+}
+
+/* make text center aligned with > arrow at the start of the line */
+.reveal blockquote {
+  text-align: center;
+}
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  text-align: center;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: var(--r-heading-color);
+  font-family: var(--r-heading-font);
+  font-weight: bold;
+  line-height: var(--r-line-height);
+  text-shadow: var(--r-heading-text-shadow);
+  word-wrap: break-word;
+}
+
+.reveal h1 {
+  font-size: var(--r-heading-size);
+  text-shadow: var(--r-heading-text-shadow);
+}
+
+.reveal h2 {
+  font-size: calc(var(--r-heading-size) / 1.5);
+  text-shadow: var(--r-heading-text-shadow);
+}
+
+.reveal h3 {
+  font-size: calc(var(--r-heading-size) / 1.9);
+  text-shadow: var(--r-heading-text-shadow);
+}
+
+/*********************************************
+ * OTHER
+ *********************************************/
 .reveal-viewport {
   background: #282A36;
   background-color: var(--r-background-color);
@@ -51,87 +110,20 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-family: var(--r-main-font);
   font-size: var(--r-main-font-size);
   font-weight: 500;
-  text-shadow: 0.04em 0.04em 0.03em #002b36;
+  text-shadow: calc(var(--r-heading-text-shadow) / 1.5);
   color: var(--r-main-color);
 }
 
-.reveal ::selection {
-  color: var(--r-selection-color);
-  background: var(--r-selection-background-color);
-  text-shadow: none;
-}
-
-.reveal ::-moz-selection {
-  color: var(--r-selection-color);
-  background: var(--r-selection-background-color);
+.reveal ::selection, ::-moz-selection {
+  color: var(--r-main-color);
+  background: var(--r-other-color);
   text-shadow: none;
 }
 
 .reveal .slides section,
 .reveal .slides section > section {
-  line-height: 1.5;
+  line-height: var(--r-line-height);
   font-weight: inherit;
-}
-
-/*********************************************
- * HEADERS
- *********************************************/
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
-  margin: var(--r-heading-margin);
-  color: var(--r-heading-color);
-  font-family: var(--r-heading-font);
-  font-weight: var(--r-heading-font-weight);
-  line-height: var(--r-heading-line-height);
-  letter-spacing: var(--r-heading-letter-spacing);
-  text-transform: var(--r-heading-text-transform);
-  text-shadow: var(--r-heading-text-shadow);
-  word-wrap: break-word;
-}
-
-.reveal h1 {
-  font-size: var(--r-heading1-size);
-}
-
-.reveal h2 {
-  font-size: var(--r-heading2-size);
-}
-
-.reveal h3 {
-  font-size: var(--r-heading3-size);
-}
-
-.reveal h4 {
-  font-size: var(--r-heading4-size);
-}
-
-.reveal h1 {
-  text-shadow: var(--r-heading1-text-shadow);
-}
-
-/*********************************************
- * OTHER
- *********************************************/
-.reveal p {
-  margin: var(--r-block-margin) 0;
-  line-height: 1.5;
-  margin-bottom: 0px;
-  text-align: left;
-  margin-left: 30px;
-}
-
-/* Remove trailing margins after titles */
-.reveal h1:last-child,
-.reveal h2:last-child,
-.reveal h3:last-child,
-.reveal h4:last-child,
-.reveal h5:last-child,
-.reveal h6:last-child {
-  margin-bottom: 0;
 }
 
 /* Ensure certain elements are never larger than the slide itself */
@@ -142,12 +134,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   max-height: 95%;
 }
 
-.reveal strong,
-.reveal b {
-  font-weight: bold;
-}
-
-.reveal em {
+.reveal em, q {
   font-style: italic;
 }
 
@@ -167,73 +154,6 @@ section.has-light-background, section.has-light-background h1, section.has-light
   list-style-type: disc;
 }
 
-.reveal ul ul {
-  list-style-type: square;
-}
-
-.reveal ul ul ul {
-  list-style-type: circle;
-}
-
-.reveal ul ul,
-.reveal ul ol,
-.reveal ol ol,
-.reveal ol ul {
-  display: block;
-  margin-left: 40px;
-}
-
-.reveal dt {
-  font-weight: bold;
-}
-
-.reveal dd {
-  margin-left: 40px;
-}
-
-.reveal blockquote {
-  display: block;
-  position: relative;
-  width: 100%;
-  margin: var(--r-block-margin) auto;
-  padding: 0px;
-  text-align: center;
-}
-
-.reveal blockquote p:first-child,
-.reveal blockquote p:last-child {
-  display: inline-block;
-  text-align: left;
-  color: var(--r-heading-color);
-}
-
-.reveal q {
-  font-style: italic;
-}
-
-.reveal pre {
-  display: block;
-  position: relative;
-  width: 90%;
-  margin: var(--r-block-margin) auto;
-  text-align: left;
-  font-size: 0.55em;
-  font-family: var(--r-code-font);
-  line-height: 1.2em;
-  word-wrap: break-word;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-.reveal code {
-  font-family: var(--r-code-font);
-  text-transform: none;
-  text-align: left;
-  vertical-align: bottom;
-  tab-size: 2;
-  font-size: 0.4em;
-}
-
-
 .reveal sup {
   vertical-align: super;
   font-size: smaller;
@@ -246,37 +166,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal small {
   display: inline-block;
-  font-size: 0.6em;
-  line-height: 1.2em;
-  vertical-align: bottom;
-}
-
-.reveal small * {
-  vertical-align: top;
-}
-
-.reveal img {
-  margin: var(--r-block-margin) 0;
-}
-
-/*********************************************
- * LINKS
- *********************************************/
-.reveal a {
-  color: var(--r-link-color);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.reveal a:hover {
-  color: var(--r-link-color-hover);
-  text-shadow: none;
-  border: none;
-}
-
-.reveal .roll span:after {
-  color: #fff;
-  background: var(--r-link-color-dark);
+  font-size: 0.45em;
 }
 
 /*********************************************
@@ -284,7 +174,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
  *********************************************/
 .reveal .r-frame {
   border: 4px solid var(--r-main-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px var(--r-background-color);
 }
 
 .reveal a .r-frame {
@@ -292,7 +182,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .reveal a:hover .r-frame {
-  border-color: var(--r-link-color);
+  border-color: var(--r-other-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -300,15 +190,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: var(--r-link-color);
-}
-
-/*********************************************
- * PROGRESS BAR
- *********************************************/
-.reveal .progress {
-  background: rgba(0, 0, 0, 0.2);
-  color: var(--r-link-color);
+  color: var(--r-other-color);
 }
 
 /*********************************************
@@ -318,55 +200,4 @@ section.has-light-background, section.has-light-background h1, section.has-light
   .backgrounds {
     background-color: var(--r-background-color);
   }
-}
-:root {
-  --r-bold-color: #EF7B45;
-  /* --r-bold-color: #caff68;  */
-  --r-italic-color: #bab9fe;
-  --r-inline-code-color: #EF7B45;
-  --r-list-bullet-color: #F8F8F2;
-}
-
-.reveal strong, .reveal b {
-  color: var(--r-bold-color);
-  text-shadow: 0.06em 0.06em 0.04em #002b36;
-}
-
-.reveal em, .reveal i, .reveal blockquote {
-  color: var(--r-italic-color);
-}
-
-.reveal code {
-  color: var(--r-inline-code-color);
-}
-
-.reveal ul {
-  list-style: none;
-}
-
-.reveal ul li::before {
-  content: "•";
-  color: var(--r-list-bullet-color);
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-}
-
-.reveal ol {
-  list-style: none;
-  counter-reset: li;
-}
-
-.reveal ol li::before {
-  content: counter(li) ".";
-  color: var(--r-list-bullet-color);
-  display: inline-block;
-  width: 2em;
-  margin-left: -2.5em;
-  margin-right: 0.5em;
-  text-align: right;
-}
-
-.reveal ol li {
-  counter-increment: li;
 }
