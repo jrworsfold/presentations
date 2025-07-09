@@ -124,7 +124,7 @@ and so shall it be. Amen.
 
 ---
 
-<section data-background-image="assets/communion.jpeg">
+<section data-background-image="assets/communion.jpg">
 
 ## Communion
 </section>
