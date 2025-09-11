@@ -1,15 +1,53 @@
-## Smaller heading
+
+
+### If a slide has a heading, it looks like this
 
 normal left-aligned text.
 
-new line with backslash or blank line.\
+Lines of text need to have a blank line in between.
+
 **Bold text for responses**
 
 > centered text
 
-*alternative text color*
+*alternative text color for information for the congregation*
 
 `copyright for song`
+
+Three dashes with blank lines either side creates a new slide.
+
+Make sure each slide isn't longer than 8 lines of text given that each line is a maximum of 45 characters.
+
+Ignore text in parentheses
+
+---
+
+
+
+
+### If a slide has a heading, it looks like this
+
+normal left-aligned text.
+
+Lines of text need to have a blank line in between.
+
+**Bold text for spoken by leader**
+
+> centered text
+
+*alternative text color for information for the congregation*
+
+`copyright for song`
+
+Three dashes with blank lines either side creates a new slide.
+
+Make sure each slide isn't longer than 6 lines of text
+
+Ignore text in parentheses
+
+L: means leader and should be bold
+
+P: means congregation and should be left as normal text
 
 ---
 
