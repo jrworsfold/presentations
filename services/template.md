@@ -6,7 +6,11 @@ normal left-aligned text.
 
 Lines of text need to have a blank line in between.
 
-**Bold text for responses**
+Bold text for words said by preacher.
+
+Remove L: and make that line in bold
+
+Remove P: and just make normal text
 
 > centered text
 
@@ -16,9 +20,9 @@ Lines of text need to have a blank line in between.
 
 Three dashes with blank lines either side creates a new slide.
 
-Make sure each slide isn't longer than 8 lines of text given that each line is a maximum of 45 characters.
+Make sure each slide isn't longer than 8 lines of text.
 
-Ignore text in parentheses
+Ignore text in parentheses or italics
 
 ---
 
